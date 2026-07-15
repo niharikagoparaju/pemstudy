@@ -1,0 +1,952 @@
+# ABP Pediatric Emergency Medicine Content Outline
+# Source: The American Board of Pediatrics, "Pediatric Emergency Medicine Content Outline",
+#         effective for certifying examinations administered April 1, 2021 and after.
+#
+# Structure:
+#   domains[]           — 13 content domains, in ABP order
+#     id                — domain number (1-13)
+#     slug              — used in Anki deck names ("PEM Boards::01 Emergency Conditions")
+#                         and tags (pem::outline::<domain-slug>::<subdomain-slug>)
+#     weight            — percent of exam questions (domain weights sum to 100)
+#     universal_tasks   — whether questions in this domain are also classified by universal task
+#     subdomains[]      — lettered subdomains; Domain 1's carry their own weights (sum to 32.5)
+#       topics[]        — numbered topics; entries are either plain strings or
+#                         {name, subtopics: [...]} for topics with lettered subtopics
+#
+# Tagging convention used by all pemstudy skills:
+#   pem::outline::01-emergency-conditions::h-infectious-disease
+#   (domain slug :: subdomain slug; topic/subtopic detail goes in the note's Outline field)
+
+meta:
+  title: Pediatric Emergency Medicine Content Outline
+  publisher: The American Board of Pediatrics
+  effective: "2021-04-01"
+
+universal_tasks:
+  - id: 1
+    name: Core Science
+    weight: 20.0
+    description: >-
+      Integrate the clinically supportive sciences in pediatric emergency medicine,
+      taking into account normal and abnormal function of the body and mind in an
+      age-specific context.
+  - id: 2
+    name: Diagnosis
+    weight: 40.0
+    description: >-
+      Use available information (i.e., patient history, physical examination,
+      epidemiology) to assess acuity and formulate a differential diagnosis, select
+      diagnostic testing, and interpret test results and response to therapies.
+  - id: 3
+    name: Patient Management
+    weight: 40.0
+    description: >-
+      Develop and implement a plan of care, including intervention, reevaluation,
+      consultation, and disposition.
+
+domains:
+  - id: 1
+    name: Emergency Conditions
+    slug: 01-emergency-conditions
+    weight: 32.5
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Allergic
+        slug: a-allergic
+        weight: 1.5
+        topics:
+          - Anaphylaxis
+          - Angioedema
+          - Serum sickness
+          - Local allergic reactions
+      - letter: B
+        name: Cardiovascular
+        slug: b-cardiovascular
+        weight: 3.0
+        topics:
+          - Congestive heart failure
+          - Dysrhythmias
+          - Congenital heart disease, including surgeries and post-surgical complications
+          - Cardiomyopathy
+          - Cardiac transplant
+          - Myocardial infarction
+          - Syncope
+          - Implanted cardiac devices
+      - letter: C
+        name: Dental
+        slug: c-dental
+        weight: 0.5
+        topics:
+          - Dental caries
+          - Post-extraction complications
+          - Diseases of the salivary glands
+          - Gingival and periodontal disorders
+          - Disorders of the mandible
+      - letter: D
+        name: Dermatologic
+        slug: d-dermatologic
+        weight: 1.5
+        topics:
+          - Urticaria
+          - Psoriasis
+          - Stevens-Johnson syndrome/toxic epidermal necrolysis
+          - Erythema multiforme
+          - Diaper dermatitis
+          - Drug eruptions
+          - Contact dermatitis
+          - Atopic dermatitis
+          - Other skin diseases characterized by rash
+      - letter: E
+        name: Endocrine
+        slug: e-endocrine
+        weight: 1.5
+        topics:
+          - Disorders of glucose homeostasis
+          - Hypothalamic and pituitary disorders
+          - Adrenal disorders
+          - Thyroid disorders
+          - Parathyroid disorders
+          - Growth and development
+      - letter: F
+        name: Gastrointestinal
+        slug: f-gastrointestinal
+        weight: 2.5
+        topics:
+          - Pyloric stenosis
+          - GI foreign body
+          - Appendicitis
+          - Intussusception
+          - Necrotizing enterocolitis
+          - Hirschsprung disease
+          - Bowel obstruction
+          - Meckel's diverticulum
+          - Volvulus
+          - Jaundice and biliary tract disease
+          - Pancreatitis
+          - Inflammatory bowel disease
+          - Gastrointestinal bleed
+          - Diaphragmatic hernia
+      - letter: G
+        name: Hematologic
+        slug: g-hematologic
+        weight: 1.5
+        topics:
+          - name: Anemia
+            subtopics:
+              - Nutritional
+              - Membrane defects
+              - Hemoglobinopathies
+              - Aplastic
+          - Neutropenia and neutrophil dysfunction
+          - Platelet disorders
+          - Coagulation disorders
+          - Blood products transfusions (nontraumatic)
+          - Other
+      - letter: H
+        name: Infectious disease
+        slug: h-infectious-disease
+        weight: 5.0
+        topics:
+          - name: Systemic bacterial infections
+            subtopics:
+              - Bacteremia
+              - Meningococcemia
+              - Sepsis
+              - Toxin-mediated
+              - Other bacterial infections
+          - name: Systemic viral infection
+            subtopics:
+              - Infectious mononucleosis
+              - Enterovirus
+              - Herpes
+              - Measles
+              - Mumps
+              - Rubella
+              - Varicella
+              - Roseola
+              - HIV infection/AIDS
+              - Rabies
+              - Parvovirus
+              - Influenza
+              - Respiratory syncytial virus
+              - Other viral infections
+          - name: Lymphadenitis
+            subtopics:
+              - Cervical
+              - Noncervical
+              - Cat-scratch disease
+              - Mycobacterial
+          - name: Central nervous system
+            subtopics:
+              - Brain
+              - Spine
+          - name: Head and neck
+            subtopics:
+              - Nasopharyngitis
+              - Stomatitis/Gingivostomatitis
+              - Pharyngitis
+              - Otitis media
+              - Mastoiditis
+              - Otitis externa
+              - Sinusitis
+              - Peritonsillar abscess
+              - Dental abscess
+              - Deep neck space infections
+              - Tracheitis
+              - Epiglottitis
+              - Parotitis
+          - name: Ophthalmologic
+            subtopics:
+              - Conjunctivitis
+              - Preseptal and orbital cellulitis
+              - Corneal ulceration
+          - name: Cardiac
+            subtopics:
+              - Myocarditis
+              - Endocarditis
+              - Pericarditis
+              - Acute rheumatic fever
+          - name: Respiratory
+            subtopics:
+              - Pneumonia
+              - Bronchiolitis
+              - Pertussis
+              - Croup
+              - Tuberculosis
+              - Empyema
+          - name: Gastrointestinal
+            subtopics:
+              - Gastroenteritis
+              - Infectious hepatitis
+              - Perianal/Perirectal abscess
+              - Clostridium difficile
+              - Cholangitis
+              - Infectious colitis
+          - name: Skin/Soft tissue
+            subtopics:
+              - Cellulitis
+              - Abscess
+              - Erysipelas
+              - Impetigo
+              - Necrotizing fasciitis
+              - Omphalitis
+              - Mastitis
+              - Candidal infection
+              - Staphylococcal scalded skin syndrome
+              - Staphylococcal pustulosis
+          - name: Orthopedic
+            subtopics:
+              - Osteomyelitis
+              - Septic arthritis
+              - Myositis
+              - Discitis
+              - Sacroiliitis
+          - name: Urologic
+            subtopics:
+              - Cystitis
+              - Pyelonephritis
+              - Renal or perinephric abscess
+              - Epididymitis
+              - Orchitis
+              - Balanitis
+          - name: Vector-borne infections
+            subtopics:
+              - Tickborne infections
+              - Mosquito-borne infections
+              - Other vector-borne or parasitic diseases
+          - name: Sexually transmitted infections
+            subtopics:
+              - Syphilis
+              - Gonorrhea
+              - Chlamydia
+              - Herpes
+              - Urethritis/Cervicitis
+              - Trichomoniasis
+              - Bacterial vaginosis
+              - Human papillomavirus
+              - Pelvic inflammatory disease
+              - Tubo-ovarian abscess
+              - Granuloma inguinale
+          - International/Travel-related bacterial infections and outbreaks
+      - letter: I
+        name: Metabolic/Genetic emergencies
+        slug: i-metabolic-genetic
+        weight: 1.0
+        topics:
+          - Hypoglycemia
+          - Inborn errors of metabolism
+          - Abnormal newborn screening
+      - letter: J
+        name: Musculoskeletal/Orthopedic
+        slug: j-musculoskeletal-orthopedic
+        weight: 1.0
+        topics:
+          - Transient synovitis
+          - Myositis
+          - Slipped capital femoral epiphysis
+          - Avascular necrosis
+          - Repetitive stress injuries
+          - Compartment syndrome
+      - letter: K
+        name: Neurologic/Neurosurgical
+        slug: k-neurologic-neurosurgical
+        weight: 2.0
+        topics:
+          - Seizures
+          - Headaches
+          - Intracranial conditions
+          - Neuromuscular and demyelinating conditions
+          - Ventricular shunt complications
+          - Cerebrovascular conditions
+      - letter: L
+        name: Obstetrics/Gynecologic
+        slug: l-obstetrics-gynecologic
+        weight: 1.5
+        topics:
+          - Pregnancy and related complications
+          - Ectopic pregnancy
+          - Pelvic pain
+          - Dysmenorrhea/Amenorrhea
+          - Abnormal uterine bleeding
+          - Imperforate hymen
+          - Labial adhesions
+          - Ovarian torsion
+          - Pre-pubertal complaints
+      - letter: M
+        name: Oncologic
+        slug: m-oncologic
+        weight: 1.5
+        topics:
+          - Leukemia
+          - Non-Hodgkin lymphoma
+          - Hodgkin disease
+          - Wilms tumor
+          - Neuroblastoma
+          - Central nervous system tumors
+          - Retinoblastoma
+          - Sarcomas
+          - Histiocytosis
+          - Therapeutic complications
+          - Bone marrow transplant
+      - letter: N
+        name: Ophthalmologic
+        slug: n-ophthalmologic
+        weight: 1.0
+        topics:
+          - Iritis
+          - Uveitis
+          - Hordeolum/Chalazion
+          - Glaucoma
+          - Ocular foreign bodies
+          - Acute visual disturbance
+          - Papilledema
+          - Retinal detachment
+          - Proptosis
+          - Hyphema
+      - letter: O
+        name: Otolaryngologic
+        slug: o-otolaryngologic
+        weight: 1.0
+        topics:
+          - Neck masses
+          - Foreign bodies
+          - Stridor
+          - Post-operative complications
+          - Epistaxis
+      - letter: P
+        name: Pulmonary
+        slug: p-pulmonary
+        weight: 2.0
+        topics:
+          - Bronchopulmonary dysplasia
+          - Aspiration pneumonia
+          - Pulmonary edema
+          - Pulmonary hemorrhage
+          - Pleuritis
+          - Costochondritis
+          - Cystic fibrosis
+          - Asthma
+          - Pneumothorax
+          - Pleural effusion
+          - Pulmonary foreign bodies
+          - Pulmonary embolism
+          - Congenital malformations
+          - Acute respiratory distress syndrome
+          - Acute respiratory failure
+          - Lung transplant complications
+          - Ventilator dependent patient
+      - letter: Q
+        name: Renal and electrolyte
+        slug: q-renal-electrolyte
+        weight: 2.0
+        topics:
+          - Dehydration
+          - Electrolyte disorders
+          - Acid-base disorders
+          - Nephrotic/Nephritic syndromes
+          - Hypertension
+          - Acute kidney injury
+          - Renal tubular acidosis
+          - Hemolytic uremic syndrome
+          - Renal stones
+          - Myoglobinuria
+          - Renal transplant complications
+          - Hematuria
+          - Proteinuria
+      - letter: R
+        name: Rheumatologic/Immunologic
+        slug: r-rheumatologic-immunologic
+        weight: 1.0
+        topics:
+          - Juvenile idiopathic arthritis
+          - Systemic lupus erythematosus
+          - Kawasaki syndrome
+          - Anaphylactoid (Henoch-Schönlein) purpura
+          - Primary immunodeficiency disorders
+          - Other rheumatologic/immunologic conditions (eg, dermatomyositis, scleroderma, sarcoidosis)
+      - letter: S
+        name: Urologic
+        slug: s-urologic
+        weight: 1.5
+        topics:
+          - name: Penile problems
+            subtopics:
+              - Priapism
+              - Paraphimosis/Phimosis
+          - Scrotal problems
+          - Acute urinary retention
+          - Hernia
+
+  - id: 2
+    name: Resuscitation
+    slug: 02-resuscitation
+    weight: 12.5
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Circulation
+        slug: a-circulation
+      - letter: B
+        name: Shock
+        slug: b-shock
+        topics:
+          - Cardiogenic
+          - Distributive
+          - Hypovolemic
+          - Obstructive
+      - letter: C
+        name: Cardiopulmonary arrest
+        slug: c-cardiopulmonary-arrest
+      - letter: D
+        name: Airway
+        slug: d-airway
+      - letter: E
+        name: Respiratory failure/arrest
+        slug: e-respiratory-failure-arrest
+      - letter: F
+        name: Neurologic
+        slug: f-neurologic
+      - letter: G
+        name: Neonatal resuscitation
+        slug: g-neonatal-resuscitation
+      - letter: H
+        name: Post-resuscitation care
+        slug: h-post-resuscitation-care
+
+  - id: 3
+    name: Trauma
+    slug: 03-trauma
+    weight: 17.5
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Trauma resuscitation
+        slug: a-trauma-resuscitation
+      - letter: B
+        name: Multisystem trauma
+        slug: b-multisystem-trauma
+      - letter: C
+        name: Chest
+        slug: c-chest
+      - letter: D
+        name: Abdominal/Pelvic
+        slug: d-abdominal-pelvic
+      - letter: E
+        name: Genitourinary
+        slug: e-genitourinary
+      - letter: F
+        name: Neurologic
+        slug: f-neurologic
+      - letter: G
+        name: Head, neck, and oral maxillofacial
+        slug: g-head-neck-oral-maxillofacial
+      - letter: H
+        name: Musculoskeletal
+        slug: h-musculoskeletal
+      - letter: I
+        name: Ophthalmologic
+        slug: i-ophthalmologic
+      - letter: J
+        name: Wound care
+        slug: j-wound-care
+      - letter: K
+        name: Burns and related injuries
+        slug: k-burns
+      - letter: L
+        name: Injury prevention
+        slug: l-injury-prevention
+
+  - id: 4
+    name: Toxicology
+    slug: 04-toxicology
+    weight: 5.0
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Toxidromes/Antidotes
+        slug: a-toxidromes-antidotes
+      - letter: B
+        name: Decontamination (non-disaster)
+        slug: b-decontamination
+      - letter: C
+        name: Medications
+        slug: c-medications
+      - letter: D
+        name: Household agents
+        slug: d-household-agents
+      - letter: E
+        name: Plants
+        slug: e-plants
+      - letter: F
+        name: Tobacco
+        slug: f-tobacco
+      - letter: G
+        name: Substances of abuse including withdrawal syndromes
+        slug: g-substances-of-abuse
+      - letter: H
+        name: Carbon monoxide/inhaled toxins
+        slug: h-carbon-monoxide-inhaled-toxins
+      - letter: I
+        name: Heavy metals
+        slug: i-heavy-metals
+      - letter: J
+        name: Alcohols
+        slug: j-alcohols
+      - letter: K
+        name: Hydrocarbons
+        slug: k-hydrocarbons
+      - letter: L
+        name: Organophosphates
+        slug: l-organophosphates
+
+  - id: 5
+    name: Environmental Emergencies
+    slug: 05-environmental-emergencies
+    weight: 4.0
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Altitude and hyperbaric emergencies
+        slug: a-altitude-hyperbaric
+      - letter: B
+        name: Animal and human bites
+        slug: b-animal-human-bites
+      - letter: C
+        name: Envenomations, bites, and stings
+        slug: c-envenomations-bites-stings
+      - letter: D
+        name: Drowning/Submersion injury
+        slug: d-drowning-submersion
+      - letter: E
+        name: Electrical injuries/lightning
+        slug: e-electrical-lightning
+      - letter: F
+        name: Heat-related conditions
+        slug: f-heat-related
+      - letter: G
+        name: Cold-related conditions
+        slug: g-cold-related
+
+  - id: 6
+    name: Child Abuse and Maltreatment
+    slug: 06-child-abuse-maltreatment
+    weight: 4.5
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Physical abuse
+        slug: a-physical-abuse
+      - letter: B
+        name: Neglect
+        slug: b-neglect
+      - letter: C
+        name: Sexual assault and abuse
+        slug: c-sexual-assault-abuse
+      - letter: D
+        name: Psychological/Emotional abuse
+        slug: d-psychological-emotional-abuse
+      - letter: E
+        name: Bullying
+        slug: e-bullying
+      - letter: F
+        name: Child abuse in the medical setting
+        slug: f-abuse-in-medical-setting
+      - letter: G
+        name: Abandonment
+        slug: g-abandonment
+      - letter: H
+        name: Human trafficking
+        slug: h-human-trafficking
+      - letter: I
+        name: Legal issues and reporting
+        slug: i-legal-issues-reporting
+
+  - id: 7
+    name: Behavioral Health Conditions and Psychosocial Issues
+    slug: 07-behavioral-health
+    weight: 5.0
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Approach to the child and family/family-centered care
+        slug: a-family-centered-care
+      - letter: B
+        name: Psychosocial development by age group
+        slug: b-psychosocial-development
+      - letter: C
+        name: Autism spectrum disorder
+        slug: c-autism-spectrum-disorder
+      - letter: D
+        name: Depression
+        slug: d-depression
+      - letter: E
+        name: Post-traumatic stress disorder
+        slug: e-ptsd
+      - letter: F
+        name: Nonsuicidal self-injury
+        slug: f-nonsuicidal-self-injury
+      - letter: G
+        name: Suicide
+        slug: g-suicide
+      - letter: H
+        name: Attention deficit-hyperactivity disorder
+        slug: h-adhd
+      - letter: I
+        name: Conduct disorder
+        slug: i-conduct-disorder
+      - letter: J
+        name: Agitated/Aggressive patient
+        slug: j-agitated-aggressive-patient
+      - letter: K
+        name: Homicidal patient
+        slug: k-homicidal-patient
+      - letter: L
+        name: Psychosis
+        slug: l-psychosis
+      - letter: M
+        name: Substance abuse and chemical dependence
+        slug: m-substance-abuse
+      - letter: N
+        name: Anxiety disorder
+        slug: n-anxiety-disorder
+      - letter: O
+        name: Obsessive-compulsive disorder
+        slug: o-ocd
+      - letter: P
+        name: Eating disorders
+        slug: p-eating-disorders
+      - letter: Q
+        name: Somatoform disorders (conversion, chronic pain)
+        slug: q-somatoform-disorders
+      - letter: R
+        name: Gender dysphoria
+        slug: r-gender-dysphoria
+      - letter: S
+        name: Screening
+        slug: s-screening
+        topics:
+          - Psychiatric safety screening
+          - Medical screening of the patient with psychiatric complaints
+      - letter: T
+        name: Violence and children
+        slug: t-violence-and-children
+        topics:
+          - Post-traumatic stress
+          - Intimate partner violence
+          - Community violence
+      - letter: U
+        name: Common behavioral complaints
+        slug: u-common-behavioral-complaints
+        topics:
+          - Colic
+          - Prolonged crying
+          - Breath holding
+          - Hyperventilation
+
+  - id: 8
+    name: Special Populations
+    slug: 08-special-populations
+    weight: 3.0
+    universal_tasks: true
+    subdomains:
+      - letter: A
+        name: Transplant patients
+        slug: a-transplant-patients
+      - letter: B
+        name: Medically and technologically complex patients
+        slug: b-medically-complex-patients
+      - letter: C
+        name: Patients with autism spectrum disorder
+        slug: c-autism-spectrum-disorder
+      - letter: D
+        name: Adult patient
+        slug: d-adult-patient
+        topics:
+          - Altered mental status
+          - Abdominal pain
+          - Cardiopulmonary arrest
+          - Chest pain
+          - Neurologic deficits
+          - Shortness of breath
+          - Syncope
+      - letter: E
+        name: Palliative care patients
+        slug: e-palliative-care-patients
+
+  - id: 9
+    name: Procedures
+    slug: 09-procedures
+    weight: 6.0
+    universal_tasks: false
+    note: >-
+      Exam questions in this domain assess the knowledge areas related to common
+      procedures in pediatric emergency medicine: indications, risks and benefits,
+      contraindications, technique, and complications.
+    subdomains:
+      - letter: A
+        name: Cardiopulmonary life support procedures
+        slug: a-cardiopulmonary-life-support
+        topics:
+          - name: Emergency vascular access
+            subtopics:
+              - Intravenous access
+              - Intraosseous access
+              - Central venous access
+              - Umbilical vessel access
+          - name: Dysrhythmia
+            subtopics:
+              - Defibrillation
+              - Cardioversion
+          - name: Advanced airway procedures
+            subtopics:
+              - Endotracheal intubation
+              - Approach to the difficult airway
+              - Surgical airway
+              - Supraglottic airway
+          - Pericardiocentesis
+          - Thoracentesis/Thoracostomy
+      - letter: B
+        name: Procedural sedation/analgesia
+        slug: b-procedural-sedation-analgesia
+        topics:
+          - Local and regional anesthesia
+          - Alternative modes of administration (eg, nitrous)
+          - Sedation of the agitated/violent patient
+          - Sedation of patient with autism spectrum disorder or developmental delay
+      - letter: C
+        name: Laceration repair
+        slug: c-laceration-repair
+      - letter: D
+        name: Incision and drainage
+        slug: d-incision-drainage
+      - letter: E
+        name: Lateral canthotomy
+        slug: e-lateral-canthotomy
+      - letter: F
+        name: Cardiac pacing
+        slug: f-cardiac-pacing
+      - letter: G
+        name: High-quality CPR
+        slug: g-high-quality-cpr
+      - letter: H
+        name: Hernia reduction
+        slug: h-hernia-reduction
+      - letter: I
+        name: Orthopedic procedures
+        slug: i-orthopedic-procedures
+      - letter: J
+        name: Foreign body removal/cerumen
+        slug: j-foreign-body-removal
+      - letter: K
+        name: Nasal packing
+        slug: k-nasal-packing
+      - letter: L
+        name: Point of care ultrasound
+        slug: l-point-of-care-ultrasound
+      - letter: M
+        name: Gastrostomy tube replacement
+        slug: m-gastrostomy-tube-replacement
+      - letter: N
+        name: Lumbar puncture/ventricular shunt tap
+        slug: n-lumbar-puncture-shunt-tap
+
+  - id: 10
+    name: Disaster Preparedness
+    slug: 10-disaster-preparedness
+    weight: 2.0
+    universal_tasks: false
+    note: &systems-note >-
+      Exam questions in this domain focus on systems-based practice in pediatric
+      emergency medicine and ask examinees to prioritize the acute needs of patients
+      in the context of a dynamic environment, taking into account resource
+      availability, team and facility capacity and capabilities, and administrative
+      and legal responsibilities.
+    subdomains:
+      - letter: A
+        name: Mass casualty management
+        slug: a-mass-casualty-management
+      - letter: B
+        name: Bioterrorism
+        slug: b-bioterrorism
+      - letter: C
+        name: Chemical terrorism
+        slug: c-chemical-terrorism
+      - letter: D
+        name: Disaster triage
+        slug: d-disaster-triage
+      - letter: E
+        name: Radiation exposure
+        slug: e-radiation-exposure
+      - letter: F
+        name: Hazardous material decontamination
+        slug: f-hazmat-decontamination
+      - letter: G
+        name: Community resource awareness (eg, strategic national stockpile, personal protective equipment, CHEMPACK, CDC/NIH resources)
+        slug: g-community-resource-awareness
+
+  - id: 11
+    name: Emergency Medical Services and Transport
+    slug: 11-ems-and-transport
+    weight: 2.0
+    universal_tasks: false
+    note: *systems-note
+    subdomains:
+      - letter: A
+        name: EMTALA
+        slug: a-emtala
+      - letter: B
+        name: EMS system organization and administration
+        slug: b-ems-organization
+      - letter: C
+        name: EMS personnel
+        slug: c-ems-personnel
+      - letter: D
+        name: Equipment and transportation
+        slug: d-equipment-transportation
+        topics:
+          - Scene transport
+          - Interhospital transport considerations
+      - letter: E
+        name: EMS for children principles — pediatric readiness, etc.
+        slug: e-ems-for-children
+      - letter: F
+        name: Medical direction
+        slug: f-medical-direction
+      - letter: G
+        name: Legal considerations
+        slug: g-legal-considerations
+  - id: 12
+    name: Emergency Department Administration and Operations
+    slug: 12-ed-administration-operations
+    weight: 2.0
+    universal_tasks: false
+    note: *systems-note
+    subdomains:
+      - letter: A
+        name: Caregiver presence during resuscitation and procedures
+        slug: a-caregiver-presence
+      - letter: B
+        name: Documentation and reporting services
+        slug: b-documentation-reporting
+      - letter: C
+        name: Interpreter usage
+        slug: c-interpreter-usage
+      - letter: D
+        name: Risk management
+        slug: d-risk-management
+      - letter: E
+        name: Legal/Ethical
+        slug: e-legal-ethical
+        topics:
+          - Consent
+          - Treatment refusal and acting against medical advice
+          - Patient bill of rights
+          - Regulatory requirements
+          - Impaired provider
+          - Electronic communication/social media
+      - letter: F
+        name: Interpersonal and communication skills
+        slug: f-interpersonal-communication
+        topics:
+          - De-escalation and conflict management
+          - Delivery of difficult news
+          - Cultural awareness
+          - Handoffs/Transitions of care
+          - Informed consent considerations
+      - letter: G
+        name: Professionalism
+        slug: g-professionalism
+        topics:
+          - Error disclosure
+          - Conflict of interest
+
+  - id: 13
+    name: Core Knowledge in Scholarly Activities
+    slug: 13-scholarly-activities
+    weight: 4.0
+    universal_tasks: false
+    note: >-
+      All of the ABP's pediatric subspecialties share the common domain of Core
+      Knowledge in Scholarly Activities. Exam questions from this domain focus on
+      knowledge related to research, ethics, and quality improvement.
+    subdomains:
+      - letter: A
+        name: Principles of biostatistics in research
+        slug: a-biostatistics
+        topics:
+          - Types of variables
+          - Distribution of data
+          - Hypothesis testing
+          - Common statistical tests
+          - Measurement of association and effect
+          - Regression
+          - Diagnostic tests
+          - Systematic review and meta-analysis
+      - letter: B
+        name: Principles of epidemiology and clinical research design
+        slug: b-epidemiology-research-design
+        topics:
+          - Study design, performance, and analysis (internal validity)
+          - Generalizability (external validity)
+          - Bias and confounding
+          - Causation
+          - Incidence and prevalence
+          - Screening
+          - Cost benefit, cost effectiveness, and outcomes
+          - Measurement (eg, validity, reliability)
+      - letter: C
+        name: Ethics in research
+        slug: c-research-ethics
+        topics:
+          - Professionalism and misconduct in research
+          - Principles of research involving human subjects
+          - Principles of consent and assent
+      - letter: D
+        name: Quality improvement and patient safety
+        slug: d-qi-patient-safety
+        topics:
+          - Project design/PDSA
+          - Data and measurement
+          - Root cause analysis
+          - Safety reporting systems
