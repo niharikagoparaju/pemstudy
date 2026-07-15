@@ -1,0 +1,21 @@
+{
+  "name": "pemstudy",
+  "description": "Pediatric Emergency Medicine board-prep toolkit: sync Obsidian study notes into high-quality Anki flashcards, manage and prune decks, and audit coverage against the ABP PEM content outline",
+  "version": "0.1.0",
+  "author": {
+    "name": "Dheeraj Erraballi",
+    "email": "dj.erraballi@gmail.com"
+  },
+  "homepage": "https://github.com/djerraballi/pemstudy",
+  "repository": "https://github.com/djerraballi/pemstudy",
+  "license": "MIT",
+  "keywords": [
+    "anki",
+    "obsidian",
+    "spaced-repetition",
+    "flashcards",
+    "medical-education",
+    "pediatric-emergency-medicine",
+    "board-prep"
+  ]
+}

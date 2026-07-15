@@ -1,0 +1,14 @@
+{
+  "name": "pemstudy",
+  "owner": {
+    "name": "Dheeraj Erraballi",
+    "email": "dj.erraballi@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "pemstudy",
+      "source": "./",
+      "description": "Pediatric Emergency Medicine board-prep toolkit: sync Obsidian study notes into high-quality Anki flashcards, manage and prune decks, and audit coverage against the ABP PEM content outline"
+    }
+  ]
+}
