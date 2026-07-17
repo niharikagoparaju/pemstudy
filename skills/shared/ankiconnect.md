@@ -26,11 +26,15 @@ then re-ping.
 {
   "vault_path": "/path/to/obsidian/vault",
   "deck_root": "PEM Boards",
+  "triage_deck_root": "PEM Triage",
+  "legacy_decks": ["Old Deck A", "Old Deck B"],
   "ankiconnect_url": "http://127.0.0.1:8765"
 }
 ```
 
 `anki.py` reads `ankiconnect_url` itself. Skills read `vault_path` and `deck_root`.
+`triage_deck_root` (default `"PEM Triage"` when absent) and `legacy_decks` are used
+only by the triage skill.
 
 ## Common operations
 
@@ -98,7 +102,13 @@ ANKI invoke findCards --json '{"query":"deck:current"}'
 - **HTML in fields**: fields are HTML. Escape `<`/`&` in medical text (e.g. "K+ <3.0"
   → `K+ &lt;3.0`), use `<br>` for line breaks, `<img src="...">` for media.
 - **Search query quoting**: deck names with spaces need `deck:"Name With Spaces"`;
-  wrap the whole query in single quotes for the shell.
+  wrap the whole query in single quotes for the shell. Deck names containing `(` `)`
+  **must** be quoted — unquoted parens are query grouping operators, not literals.
+- **`deck:` matches exact name + subdecks, never prefixes.** `deck:"PEM Boards"` does
+  **not** match `PEM Boards (ABP)` (verified). This matters when a legacy deck's name
+  is a prefix of the active deck's — they stay correctly separate — but always read
+  deck names carefully before a mutating batch, because the two are easy to confuse
+  by eye.
 - **`null` results from add-notes** mean that specific note was rejected (usually a
   duplicate); the rest of the batch still succeeded.
 

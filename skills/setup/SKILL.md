@@ -90,9 +90,17 @@ file already exists):
 {
   "vault_path": "/Users/…/VaultName",
   "deck_root": "PEM Boards",
+  "triage_deck_root": "PEM Triage",
+  "legacy_decks": [],
   "ankiconnect_url": "http://127.0.0.1:8765"
 }
 ```
+
+`triage_deck_root` and `legacy_decks` belong to the triage skill (for digesting a
+pre-existing collection). Don't create the triage decks here — the triage skill
+creates them lazily, so users with no legacy cards never see them. If the user has
+pre-existing decks worth digesting, list them in `legacy_decks` and point the user
+at the triage skill; otherwise leave it `[]`.
 
 Also create `~/.pemstudy/backups/` (used by the deck skill before destructive ops).
 
