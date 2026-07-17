@@ -44,14 +44,21 @@ For each candidate note:
      medical content (folder name is a prior, content wins). Deck =
      `<deck_root>::<NN> <Domain Name>`; tag = `pem::outline::<domain-slug>::<subdomain-slug>`;
      Outline field = human-readable `Domain > Subdomain > Topic`.
-   - for images: resolve `![[...]]` to a real file in the vault (search by filename —
-     Obsidian may store attachments in a subfolder). **Look at the image** before
-     using it: confirm it actually shows what the note implies and contains no
-     patient-identifying information (names, MRNs, faces). Unverifiable → propose the
-     card without the image and say why.
+   - for images: resolve per `note-convention.md` (vault embeds *and* remote
+     question-bank URLs — most are remote). **Download and look at every image**
+     before building a card from it: confirm it shows what the note implies, contains
+     no patient-identifying information, and doesn't print the answer on its face
+     (which rules out an identify-card). Unviewable → propose the card without the
+     image and say why.
 4. **Fact-check yourself**: card content must be medically accurate, not just a
-   faithful copy of the note. If the note contradicts established guidance
-   (typo'd dose, swapped terms), flag it to the user instead of carding the error.
+   faithful copy of the note. Two failure modes seen in real notes, both of which
+   must be surfaced rather than carded:
+   - **The note contradicts its own pasted source** (e.g. two branches of an
+     algorithm swapped). Show the user note-vs-source side by side and let them rule.
+   - **Adult figures on a pediatric card** (e.g. adult ATLS thresholds, an UpToDate
+     adult protocol). Flag the provenance; a peds-wrong number is a wrong answer.
+   Never silently rewrite the user's medicine, and never silently card what you
+   believe is false.
 
 ### 3. Dedupe against the existing deck
 

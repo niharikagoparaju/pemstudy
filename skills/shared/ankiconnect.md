@@ -88,9 +88,17 @@ ANKI invoke findCards --json '{"query":"deck:current"}'
 
 ## Gotchas
 
-- **Note ids vs card ids**: `find`/`notes-info`/`delete-notes`/tag ops use *note* ids;
-  `cards-info`/`change-deck` use *card* ids. For our note types they are usually equal
-  (one card per note) but never assume — get card ids from `notes-info` → `cards`.
+- **Note ids vs card ids** — the single most error-prone thing in this API:
+  - `findNotes`/`notes-info`/`delete-notes`/tag ops take **note** ids;
+    `findCards`/`cards-info`/`change-deck`/`suspend`/`forget` take **card** ids.
+  - **A cloze note produces one card per deletion.** `{{c1}}`–`{{c5}}` in one note = 5
+    cards. So note count ≠ card count for any batch containing cloze, and a note's
+    cards must always be moved as a set (`notes-info` → `cards`) or the note splits
+    across decks.
+  - **Count what you mean when verifying.** "I created 53 notes" must be checked with
+    `findNotes`, not `findCards` — otherwise cloze expansion looks like a failure
+    (53 notes legitimately returned 74 cards in testing, twice mistaken for a bug).
+  - `anki.py find` = `findNotes`. Use `invoke findCards` when you want cards.
 - **Duplicate detection**: `allowDuplicate: false` only catches *exact* first-field
   matches within the same note type. Semantic duplicates must be judged by reading
   existing cards (see the sync skill).

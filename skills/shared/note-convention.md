@@ -10,9 +10,22 @@ may use*, not requirements; honor them when present.
   Use the folder name as a prior for the content-outline domain, but classify each
   card by its actual content.
 - A note may contain **one or many questions** from a study session.
-- Embedded images use Obsidian syntax: `![[Pasted image 20260714194009.png]]` or
-  `![alt](path.png)`. Resolve them relative to the vault root (Obsidian may also put
-  them in an attachments subfolder — search the vault for the filename).
+- **Images come in three forms, and most are NOT vault files:**
+  - `![[Pasted image ....png]]` — Obsidian embed of a vault file. Search the vault by
+    filename (attachments may live in a subfolder). **Verify it exists** — a dead
+    embed is common when a paste didn't save.
+  - `![](https://roshreview.imgix.net/...)`, `![](https://media.roshreview.com/...)`,
+    radiopaedia, etc. — **remote question-bank images**, the common case. Download
+    them into Anki media (`store-media`) so cards survive URL rotation and work
+    offline. This is the user's licensed qbank content used for personal study; the
+    resulting deck holds third-party images and shouldn't be shared.
+  - Malformed/nested markdown (an image link pasted inside another) — extract the
+    first real URL and move on.
+- **Always look at an image before building a card from it.** In testing: a note
+  saying "On XR: recognize pelvic fracture types" actually linked an anatomical
+  *diagram*, not an X-ray; another image had its answer printed on its face (so no
+  identify-card was possible); a third contained the only copy of facts the note never
+  wrote down. The image also often reveals the card's real teaching point.
 
 ## Retain markers (user intent)
 
@@ -20,9 +33,15 @@ When the user marks content, respect it:
 
 | Marker in note | Meaning |
 |---|---|
+| `Incorrect:` / `Correct:` section headers | A question-bank block split by what the user got wrong vs right. **Both are card-worthy** — "Correct" means they answered it but still wrote it down, i.e. it wasn't secure. Don't skip the Correct section. |
 | `**Keep:**`, `Retain:`, `Card:`, `#card` | Definitely make card(s) from this |
 | `skip`, `#skip`, `%%skip%%`, "already know" | Do NOT make cards from this |
 | No marker | Use judgment per the card-quality guide |
+
+A single note is usually **one full question block (10–20 questions)** and yields
+40–60 cards. That is expected, not a signal to trim — everything written down was
+written down deliberately. Numbered items are questions; indented sub-items are the
+answer content.
 
 ## Sync-state frontmatter (written by the sync skill)
 
