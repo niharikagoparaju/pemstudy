@@ -1,0 +1,39 @@
+{
+  "PEM Basic": {
+    "modelName": "PEM Basic",
+    "inOrderFields": ["Front", "Back", "Extra", "Source", "Outline"],
+    "css": ".card { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 20px; text-align: center; color: #1a1a1a; background-color: #fdfdfd; } .card.night_mode { color: #eee; background-color: #2f2f31; } img { max-width: 95%; max-height: 60vh; } .extra { font-size: 16px; color: #555; margin-top: 14px; } .night_mode .extra { color: #aaa; } .meta { font-size: 11px; color: #999; margin-top: 18px; }",
+    "cardTemplates": [
+      {
+        "Name": "Card 1",
+        "Front": "{{Front}}",
+        "Back": "{{FrontSide}}<hr id=answer>{{Back}}{{#Extra}}<div class=extra>{{Extra}}</div>{{/Extra}}<div class=meta>{{Source}} · {{Outline}}</div>"
+      }
+    ]
+  },
+  "PEM Cloze": {
+    "modelName": "PEM Cloze",
+    "inOrderFields": ["Text", "Extra", "Source", "Outline"],
+    "isCloze": true,
+    "css": ".card { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 20px; text-align: center; color: #1a1a1a; background-color: #fdfdfd; } .card.night_mode { color: #eee; background-color: #2f2f31; } .cloze { font-weight: bold; color: #0b57d0; } .night_mode .cloze { color: #8ab4f8; } img { max-width: 95%; max-height: 60vh; } .extra { font-size: 16px; color: #555; margin-top: 14px; } .night_mode .extra { color: #aaa; } .meta { font-size: 11px; color: #999; margin-top: 18px; }",
+    "cardTemplates": [
+      {
+        "Name": "Cloze",
+        "Front": "{{cloze:Text}}",
+        "Back": "{{cloze:Text}}{{#Extra}}<div class=extra>{{Extra}}</div>{{/Extra}}<div class=meta>{{Source}} · {{Outline}}</div>"
+      }
+    ]
+  },
+  "PEM Image Identify": {
+    "modelName": "PEM Image Identify",
+    "inOrderFields": ["Image", "Question", "Answer", "Description", "Source", "Outline"],
+    "css": ".card { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 20px; text-align: center; color: #1a1a1a; background-color: #fdfdfd; } .card.night_mode { color: #eee; background-color: #2f2f31; } img { max-width: 95%; max-height: 65vh; } .desc { font-size: 16px; color: #555; margin-top: 14px; } .night_mode .desc { color: #aaa; } .meta { font-size: 11px; color: #999; margin-top: 18px; }",
+    "cardTemplates": [
+      {
+        "Name": "Identify",
+        "Front": "{{Image}}<br>{{Question}}",
+        "Back": "{{FrontSide}}<hr id=answer><b>{{Answer}}</b>{{#Description}}<div class=desc>{{Description}}</div>{{/Description}}<div class=meta>{{Source}} · {{Outline}}</div>"
+      }
+    ]
+  }
+}
