@@ -13,7 +13,7 @@ legacy source decks ──stage──▶  PEM Legacy::NN <Domain>
                                   suspended  = not yet triaged
                                   unsuspended = approved, in rotation   ◀── promote (in place)
 
-PEM Boards (ABP)::NN <Domain>   ← note-derived cards ONLY, fed by sync from Obsidian
+PEM Notes::NN <Domain>          ← note-derived cards ONLY, fed by sync from Obsidian
 ```
 
 **The two trees never exchange cards.** `deck_root` holds exactly what came from the

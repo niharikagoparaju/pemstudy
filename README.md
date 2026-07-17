@@ -12,7 +12,7 @@ A Claude Code plugin for pediatric emergency medicine (PEM) board prep. It wires
 The plugin keeps **two separate deck trees**, because the thing that kills board prep is opening Anki to 1,500 due cards and closing it again.
 
 ```
-Obsidian vault ──sync──▶  PEM Boards (ABP)::NN <Domain>     ← cards from YOUR notes, only
+Obsidian vault ──sync──▶  PEM Notes::NN <Domain>     ← cards from YOUR notes, only
  (daily habit)
 
 your old decks ──stage──▶  PEM Legacy::NN <Domain>          ← cards from your old collection, only
@@ -50,7 +50,7 @@ Then in Claude Code:
 /pemstudy:setup
 ```
 
-Setup verifies AnkiConnect, records your vault path, creates the `PEM Boards` deck tree (one subdeck per content-outline domain), and installs the plugin's note types.
+Setup verifies AnkiConnect, records your vault path, creates the `PEM Notes` deck tree (one subdeck per content-outline domain), and installs the plugin's note types.
 
 ## Workflow
 

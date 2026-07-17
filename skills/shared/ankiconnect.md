@@ -25,7 +25,7 @@ then re-ping.
 ```json
 {
   "vault_path": "/path/to/obsidian/vault",
-  "deck_root": "PEM Boards",
+  "deck_root": "PEM Notes",
   "legacy_deck_root": "PEM Legacy",
   "legacy_decks": ["Old Deck A", "Old Deck B"],
   "ankiconnect_url": "http://127.0.0.1:8765"

@@ -41,7 +41,9 @@ find ~ -maxdepth 4 -name ".obsidian" -type d 2>/dev/null
 
 ### 3. Choose the deck root
 
-Default: `PEM Boards`. Check for collision:
+Default: `PEM Notes` — it says what the deck holds (cards from your notes), pairs with
+`PEM Legacy`, and avoids colliding with a hand-built `PEM Boards` deck, which PEM
+candidates commonly already have. Check for collision anyway:
 
 ```bash
 ANKI decks
@@ -53,17 +55,19 @@ hand-built tree), do NOT silently merge. Ask the user to choose:
 1. **Adopt** — create the plugin's numbered domain subdecks under the existing root,
    alongside their current subdecks (existing cards untouched; the deck skill can
    reorganize them later).
-2. **Separate root** — use a different name (e.g. `PEM Boards (ABP)`).
+2. **Separate root** — use a different name. Avoid near-identical names: a user in
+   testing ended up with both `PEM Boards` and `PEM Boards (ABP)` and repeatedly
+   confused them in the sidebar.
 
 ### 4. Create the domain subdecks
 
 Read the 28 domains from `${CLAUDE_PLUGIN_ROOT}/data/pem-content-outline.yaml`.
 For each, create `<deck_root>::<NN> <Domain Name>` where NN is the zero-padded id
-from the `slug` (e.g. `PEM Boards::01 Trauma` … `PEM Boards::28 Core Knowledge in
+from the `slug` (e.g. `PEM Notes::01 Trauma` … `PEM Notes::28 Core Knowledge in
 Scholarly Activities`):
 
 ```bash
-ANKI create-deck "PEM Boards::01 Trauma"   # idempotent, one per domain
+ANKI create-deck "PEM Notes::01 Trauma"   # idempotent, one per domain
 ```
 
 ### 5. Create note types
@@ -89,7 +93,7 @@ file already exists):
 ```json
 {
   "vault_path": "/Users/…/VaultName",
-  "deck_root": "PEM Boards",
+  "deck_root": "PEM Notes",
   "legacy_deck_root": "PEM Legacy",
   "legacy_decks": [],
   "ankiconnect_url": "http://127.0.0.1:8765"
@@ -115,7 +119,7 @@ template just gives their notes a head start. Don't copy without asking.
 Confirm, then summarize to the user:
 
 ```bash
-ANKI decks | grep -c "PEM Boards::"     # expect ≥ 28
+ANKI decks | grep -c "PEM Notes::"     # expect ≥ 28
 ANKI models | grep "PEM"                # expect the 3 PEM models
 ```
 
