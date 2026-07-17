@@ -39,12 +39,22 @@ Rules:
 
 - A note is a **sync candidate** when `pem_synced` is missing, or the file's mtime is
   newer than `pem_synced` (the user edited it since the last sync).
+- **After writing frontmatter, reset the file's mtime to match `pem_synced`**
+  (`touch -m -d "<same wall-clock timestamp>" "<file>"`) — the frontmatter edit itself
+  bumps mtime past `pem_synced`, which would make every synced note a perpetual
+  candidate. Generate both timestamps from `date` in one shot; never hand-write them
+  (a wrong timezone offset silently breaks candidate detection).
+- **Zero-yield notes get `pem_synced` too.** A note processed and found to contain no
+  card-worthy content (non-medical notes, empty files) is still marked synced (with no
+  `pem_anki_notes`) so it stops appearing as a candidate; editing it re-candidates it
+  via the mtime rule.
 - On re-sync of an edited note: fetch the existing `pem_anki_notes` with `notes-info`
   first — only propose cards for *new* material; never recreate cards that already
   exist (some ids may have been deleted by the user in Anki; ignore missing ids).
 - **Append** new note ids to `pem_anki_notes`; never drop existing ids.
 - Preserve any other frontmatter keys the user has; only touch the two `pem_*` keys.
-- Skip non-note files: anything in `.obsidian/`, `.trash/`, and templates.
+- Skip non-note files: anything in `.obsidian/`, `.trash/`, and templates. Skip
+  empty files entirely (don't even mark them — nothing to record).
 
 ## Anki-side provenance
 
