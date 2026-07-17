@@ -9,8 +9,8 @@ Usage:
     anki.py decks
     anki.py models
     anki.py model-fields "PEM Basic"
-    anki.py create-deck "PEM Boards::01 Emergency Conditions"
-    anki.py find 'deck:"PEM Boards" tag:pem::outline::01-emergency-conditions::h-infectious-disease'
+    anki.py create-deck "PEM Boards (ABP)::01 Trauma"
+    anki.py find 'deck:"PEM Boards (ABP)" tag:pem::outline::03-infectious-diseases::a-systemic-bacterial-infections'
     anki.py notes-info 1234567890 1234567891
     anki.py cards-info 1234567890
     anki.py add-note --json '{"deckName": ..., "modelName": ..., "fields": {...}, "tags": [...]}'
@@ -19,7 +19,11 @@ Usage:
     anki.py delete-notes 1234567890 1234567891
     anki.py add-tags --notes 123,456 --tags "pem::flagged"
     anki.py remove-tags --notes 123,456 --tags "pem::flagged"
-    anki.py change-deck --cards 123,456 --deck "PEM Boards::03 Trauma"
+    anki.py change-deck --cards 123,456 --deck "PEM Boards (ABP)::01 Trauma"
+    anki.py suspend --cards 123,456           # take cards out of review rotation
+    anki.py unsuspend --cards 123,456         # put them back in
+    anki.py are-suspended --cards 123,456
+    anki.py forget --cards 123,456            # reset to new (drops interval/due history)
     anki.py store-media /path/to/image.png [--name stored-name.png]
     anki.py create-model --json '{"modelName": ..., "inOrderFields": [...], "cardTemplates": [...]}'
     anki.py export-backup /path/to/backup.apkg [--deck "PEM Boards"]
@@ -166,6 +170,15 @@ def main():
     p.add_argument("--cards", required=True, help="comma-separated card ids")
     p.add_argument("--deck", required=True)
 
+    for name, help_text in [
+        ("suspend", "suspend cards (removes them from review rotation)"),
+        ("unsuspend", "unsuspend cards (returns them to rotation)"),
+        ("are-suspended", "report suspended state per card id"),
+        ("forget", "reset cards to new, discarding interval/due history"),
+    ]:
+        p = add(name, help=help_text)
+        p.add_argument("--cards", required=True, help="comma-separated card ids")
+
     p = add("store-media", help="upload a file into Anki's media collection")
     p.add_argument("path")
     p.add_argument("--name", help="filename to store as (default: basename)")
@@ -230,6 +243,19 @@ def main():
     elif cmd == "change-deck":
         invoke(url, "changeDeck", {"cards": csv_int_list(args.cards), "deck": args.deck})
         emit({"moved": csv_int_list(args.cards), "deck": args.deck})
+    elif cmd in ("suspend", "unsuspend"):
+        cards = csv_int_list(args.cards)
+        invoke(url, cmd, {"cards": cards})
+        # suspend/unsuspend return false when the op was a no-op (already in that
+        # state), which is not an error — report the resulting state instead.
+        emit({cmd + "ed": cards, "suspended_now": invoke(url, "areSuspended", {"cards": cards})})
+    elif cmd == "are-suspended":
+        cards = csv_int_list(args.cards)
+        emit(dict(zip(map(str, cards), invoke(url, "areSuspended", {"cards": cards}))))
+    elif cmd == "forget":
+        cards = csv_int_list(args.cards)
+        invoke(url, "forgetCards", {"cards": cards})
+        emit({"reset_to_new": cards})
     elif cmd == "store-media":
         with open(args.path, "rb") as f:
             data = base64.b64encode(f.read()).decode("ascii")

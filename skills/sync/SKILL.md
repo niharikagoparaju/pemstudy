@@ -12,6 +12,7 @@ existing deck, create approved cards in Anki, and record sync state in the notes
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/ankiconnect.md` (CLI usage + safety)
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/card-quality.md` (what to propose)
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/note-convention.md` (parsing + sync state)
+- `${CLAUDE_PLUGIN_ROOT}/skills/shared/dedupe.md` (duplicate judgment)
 
 Config from `~/.pemstudy/config.json` (missing → send the user to the setup skill).
 Verify Anki is reachable (`ping`) before doing any work.
@@ -54,17 +55,12 @@ For each candidate note:
 
 ### 3. Dedupe against the existing deck
 
-For each proposed card, search existing notes before adding:
+For each proposed card, search existing notes before adding and judge duplication per
+`${CLAUDE_PLUGIN_ROOT}/skills/shared/dedupe.md` (search patterns and the keeper test
+are there — don't re-derive them).
 
-```bash
-ANKI find 'tag:pem::outline::<domain-slug>::<subdomain-slug>'   # then notes-info
-ANKI find '"deck:<deck_root>" <distinctive keyword>'
-```
-
-Judge semantic duplication (same fact tested, even with different wording — the
-`allowDuplicate` flag only blocks byte-identical first fields). Duplicate → drop the
-proposal and note which existing card covers it. Near-duplicate where the new card
-is better → propose *updating* the existing note instead of adding.
+Duplicate → drop the proposal and note which existing card covers it. Near-duplicate
+where the new card is better → propose *updating* the existing note instead of adding.
 
 ### 4. Batch review with the user
 

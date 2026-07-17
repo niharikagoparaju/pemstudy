@@ -9,7 +9,8 @@ Operate on the user's Anki collection per their instructions, safely.
 
 **REQUIRED READING:** `${CLAUDE_PLUGIN_ROOT}/skills/shared/ankiconnect.md` — especially
 the safety rules and the note-id vs card-id gotcha. Card standards:
-`${CLAUDE_PLUGIN_ROOT}/skills/shared/card-quality.md`. Outline taxonomy:
+`${CLAUDE_PLUGIN_ROOT}/skills/shared/card-quality.md`. Duplicate judgment:
+`${CLAUDE_PLUGIN_ROOT}/skills/shared/dedupe.md`. Outline taxonomy:
 `${CLAUDE_PLUGIN_ROOT}/data/pem-content-outline.yaml`.
 
 Config from `~/.pemstudy/config.json`; `ping` before any work.
@@ -39,12 +40,8 @@ tree), confirm the deck name back to them before touching it.
 
 1. Pull candidates: `ANKI find '"deck:<deck_root or subdeck>"'` → `notes-info`
    in batches (~100).
-2. Judge **semantic** duplication: same fact tested, even with different wording,
-   different note types, or Q&A vs cloze form. Group duplicates together.
-3. For each group recommend a keeper (better wording per card-quality guide, richer
-   Extra/Source) and losers. If the loser has scheduling history worth keeping
-   (mature card vs brand-new duplicate), keep the mature one's note and merge wording.
-4. Dry-run table → approval → backup → `delete-notes` the losers.
+2. Group duplicates and pick keepers per `${CLAUDE_PLUGIN_ROOT}/skills/shared/dedupe.md`.
+3. Dry-run table → approval → backup → `delete-notes` the losers.
 
 ### Accuracy review
 
@@ -83,4 +80,6 @@ browser before acting).
 - Flagging cards as inaccurate on weak grounds — confidence threshold is high;
   the user's review time is the scarce resource.
 - Treating literal-text difference as non-duplicate — duplication is semantic.
-- Touching decks outside `deck_root` without explicit naming + confirmation.
+- Touching decks outside `deck_root` without explicit naming + confirmation. The
+  triage deck and the legacy source decks belong to the triage skill — don't
+  reorganize them here unless the user explicitly asks.
