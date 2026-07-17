@@ -24,7 +24,9 @@ Search narrow-to-wide; the outline tag is the cheapest filter:
 
 ```bash
 ANKI find '"deck:<deck_root>" tag:pem::outline::<domain-slug>::<subdomain-slug>'
-ANKI find '"deck:<deck_root>" tag:pem::outline::<domain-slug>'      # domain-level
+ANKI find '"deck:<deck_root>" tag:pem::outline::<domain-slug>'      # domain + ALL its
+                                                                    # subdomains (tag:
+                                                                    # search is hierarchical)
 ANKI find '"deck:<deck_root>" <distinctive keyword>'                # e.g. a drug name
 ```
 

@@ -52,10 +52,18 @@ triage cards (which carry outline tags) and silently inflates the report:
 ANKI find '"deck:<deck_root>" tag:pem::outline::01-trauma::e-head-brain-injuries'
 ```
 
-Cards in the active deck missing outline tags: count them as "unclassified" and
-suggest the deck skill's retagging operation. (Triage cards carry only a
-domain-level `pem::outline::<domain>` tag until promoted — that's expected, not
-a gap.)
+Two kinds of gap are worth reporting separately:
+
+```bash
+# no outline tag at all -> deck skill's retagging operation
+ANKI find '"deck:<deck_root>" -tag:pem::outline::*'
+# domain-tagged but never subdomain-classified (tag: search is hierarchical, so the
+# -tag:...::* exclusion is what isolates the bare parent)
+ANKI find '"deck:<deck_root>" tag:pem::outline::01-trauma -tag:pem::outline::01-trauma::*'
+```
+
+(Triage cards carry only a domain-level tag until promoted — that's by design, not a
+gap, and the deck scoping above already excludes them.)
 
 ### 4. Report
 

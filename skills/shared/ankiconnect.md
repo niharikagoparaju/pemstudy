@@ -96,6 +96,15 @@ ANKI invoke findCards --json '{"query":"deck:current"}'
   existing cards (see the sync skill).
 - **Tags are space-separated strings** in add-tags/remove-tags; a tag itself must not
   contain spaces. Use `::` for hierarchy (Anki renders it as a tree).
+- **`tag:` search is hierarchical, `remove-tags` is not** (verified):
+  - `tag:pem::outline::01-trauma` matches the bare tag **and every child**
+    (`...::a-trauma-resuscitation`, etc.). This is usually what you want for a
+    domain-wide search — don't "fix" it.
+  - To match *only* the bare parent: `tag:foo -tag:foo::*`. Use this to find cards
+    classified to a domain but not yet to a subdomain.
+  - `remove-tags --tags foo` removes only the exact tag `foo`, leaving `foo::bar`
+    intact. So verifying a tag removal with `find tag:foo` gives a false failure —
+    read `notes-info` tags instead.
 - **Media filenames**: prefix stored files descriptively (`pem-<topic>-<date>.<ext>`)
   to avoid colliding with the user's existing media. `storeMediaFile` silently
   overwrites an existing name.
