@@ -17,23 +17,25 @@ subdomains) and the live collection via
 
 ### 1. Count cards per domain
 
-For each of the 13 domains, count notes in its subdeck (plugin-managed cards) —
+For each of the 28 domains, count notes in its subdeck (plugin-managed cards) —
 one `find` per domain:
 
 ```bash
-ANKI find '"deck:<deck_root>::01 Emergency Conditions"'   # count ids per domain
+ANKI find '"deck:<deck_root>::01 Trauma"'   # count ids per domain
 ```
 
 If the user also wants legacy/hand-built decks counted, they must name them; map
 each named deck to a domain by content and say what mapping was assumed.
 
-### 2. Subdomain resolution (Domain 1 and on request)
+### 2. Subdomain resolution (top-weighted domains and on request)
 
-Domain 1 is a third of the exam and has weighted subdomains — always break it down
-by tag:
+Subdomains carry no individual weights in this outline, so don't invent shares for
+them. Break down the heaviest domains — Trauma (17%), Resuscitation (10%),
+Infectious Diseases (8%) — by tag so lopsided coverage inside a big domain is
+visible:
 
 ```bash
-ANKI find 'tag:pem::outline::01-emergency-conditions::h-infectious-disease'
+ANKI find 'tag:pem::outline::01-trauma::e-head-brain-injuries'
 ```
 
 Cards missing outline tags: count them as "unclassified" and suggest the deck
@@ -55,10 +57,10 @@ first:
 
 ### 4. Recommend
 
-Close with 2–4 concrete suggestions tied to the data, e.g. "Trauma is 17.5% of the
-exam and you have 0 cards — prioritize trauma question blocks next" or "Infectious
-disease (5% weight) has 40% of your Domain-1 cards — coverage is lopsided, not
-wrong". Keep it descriptive; the user decides what to study.
+Close with 2–4 concrete suggestions tied to the data, e.g. "Trauma is 17% of the
+exam and you have 0 cards — prioritize trauma question blocks next" or "Toxicology
+(4% weight) holds 30% of your cards — coverage is lopsided, not wrong". Keep it
+descriptive; the user decides what to study.
 
 ## Interpretation cautions
 

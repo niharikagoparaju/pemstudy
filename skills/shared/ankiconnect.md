@@ -45,19 +45,19 @@ ANKI models
 ANKI model-fields "PEM Basic"
 
 # Search (Anki query syntax; quote the whole query)
-ANKI find 'deck:"PEM Boards::03 Trauma"'
-ANKI find 'tag:pem::outline::04-toxicology::a-toxidromes-antidotes'
+ANKI find 'deck:"PEM Boards::01 Trauma"'
+ANKI find 'tag:pem::outline::07-toxicology::a-toxicology-concepts'
 ANKI find '"deck:PEM Boards" added:7'          # added in last 7 days
 ANKI notes-info 1234567890 1234567891           # fields + tags for note ids
 ANKI cards-info 1234567890                      # deck, scheduling info for card ids
 
 # Create
-ANKI create-deck "PEM Boards::04 Toxicology"    # idempotent; :: nests
+ANKI create-deck "PEM Boards::07 Toxicology"    # idempotent; :: nests
 ANKI add-note --json '{
-  "deckName": "PEM Boards::04 Toxicology",
+  "deckName": "PEM Boards::07 Toxicology",
   "modelName": "PEM Basic",
   "fields": {"Front": "...", "Back": "...", "Extra": "", "Source": "...", "Outline": "..."},
-  "tags": ["pem::outline::04-toxicology::a-toxidromes-antidotes", "pem::source::2026-07-15-tox"],
+  "tags": ["pem::outline::07-toxicology::a-toxicology-concepts", "pem::source::2026-07-15-tox"],
   "options": {"allowDuplicate": false}
 }'
 ANKI add-notes --json '[ {note}, {note} ]'      # returns list of ids; null = rejected (e.g. exact dup)
@@ -70,7 +70,7 @@ ANKI store-media "/vault/Pasted image 20260714194009.png" --name "pem-sjs-rash-2
 ANKI update-note --json '{"id": 123, "fields": {"Back": "..."}, "tags": ["..."]}'
 ANKI add-tags --notes 123,456 --tags "pem::flagged::inaccurate"
 ANKI remove-tags --notes 123,456 --tags "pem::flagged::inaccurate"
-ANKI change-deck --cards 123,456 --deck "PEM Boards::03 Trauma"   # takes CARD ids, not note ids
+ANKI change-deck --cards 123,456 --deck "PEM Boards::01 Trauma"   # takes CARD ids, not note ids
 
 # Destructive — ALWAYS export a backup first (see Safety)
 ANKI export-backup "$HOME/.pemstudy/backups/pre-prune-$(date +%Y%m%d-%H%M%S).apkg" --deck "PEM Boards"

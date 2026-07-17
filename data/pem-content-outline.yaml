@@ -1,952 +1,1038 @@
-# ABP Pediatric Emergency Medicine Content Outline
-# Source: The American Board of Pediatrics, "Pediatric Emergency Medicine Content Outline",
-#         effective for certifying examinations administered April 1, 2021 and after.
+# ABP Pediatric Emergency Medicine Content Outline (2027 revision)
+# Source: The American Board of Pediatrics, "Pediatric Emergency Medicine Content
+#         Outline — In-Training, Initial Certification, and Maintenance of
+#         Certification Exams", effective for all examinations administered
+#         April 1, 2027, and after. Approved by the PEM Subboard December 2025.
+#
+# The prior (2021) outline — 13 domains with universal tasks — is preserved in git
+# history if anyone needs it for exams administered before April 2027.
 #
 # Structure:
-#   domains[]           — 13 content domains, in ABP order
-#     id                — domain number (1-13)
-#     slug              — used in Anki deck names ("PEM Boards::01 Emergency Conditions")
+#   domains[]           — 28 content domains, in ABP order, flat weights (sum = 100)
+#     id                — domain number (1-28)
+#     slug              — used in Anki deck names ("PEM Boards::01 Trauma")
 #                         and tags (pem::outline::<domain-slug>::<subdomain-slug>)
-#     weight            — percent of exam questions (domain weights sum to 100)
-#     universal_tasks   — whether questions in this domain are also classified by universal task
-#     subdomains[]      — lettered subdomains; Domain 1's carry their own weights (sum to 32.5)
-#       topics[]        — numbered topics; entries are either plain strings or
-#                         {name, subtopics: [...]} for topics with lettered subtopics
+#     weight            — percent of exam questions
+#     subdomains[]      — lettered subdomains, each with the ABP competency
+#                         description; a few carry numbered `topics`
 #
 # Tagging convention used by all pemstudy skills:
-#   pem::outline::01-emergency-conditions::h-infectious-disease
-#   (domain slug :: subdomain slug; topic/subtopic detail goes in the note's Outline field)
+#   pem::outline::01-trauma::e-head-brain-injuries
+#   (domain slug :: subdomain slug; topic detail goes in the note's Outline field)
 
 meta:
   title: Pediatric Emergency Medicine Content Outline
   publisher: The American Board of Pediatrics
-  effective: "2021-04-01"
-
-universal_tasks:
-  - id: 1
-    name: Core Science
-    weight: 20.0
-    description: >-
-      Integrate the clinically supportive sciences in pediatric emergency medicine,
-      taking into account normal and abnormal function of the body and mind in an
-      age-specific context.
-  - id: 2
-    name: Diagnosis
-    weight: 40.0
-    description: >-
-      Use available information (i.e., patient history, physical examination,
-      epidemiology) to assess acuity and formulate a differential diagnosis, select
-      diagnostic testing, and interpret test results and response to therapies.
-  - id: 3
-    name: Patient Management
-    weight: 40.0
-    description: >-
-      Develop and implement a plan of care, including intervention, reevaluation,
-      consultation, and disposition.
+  effective: "2027-04-01"
+  approved: "2025-12"
+  note: >-
+    28 flat-weighted content domains. Unlike the 2021 outline there are no
+    universal-task classifications and no per-subdomain weights.
 
 domains:
   - id: 1
-    name: Emergency Conditions
-    slug: 01-emergency-conditions
-    weight: 32.5
-    universal_tasks: true
-    subdomains:
-      - letter: A
-        name: Allergic
-        slug: a-allergic
-        weight: 1.5
-        topics:
-          - Anaphylaxis
-          - Angioedema
-          - Serum sickness
-          - Local allergic reactions
-      - letter: B
-        name: Cardiovascular
-        slug: b-cardiovascular
-        weight: 3.0
-        topics:
-          - Congestive heart failure
-          - Dysrhythmias
-          - Congenital heart disease, including surgeries and post-surgical complications
-          - Cardiomyopathy
-          - Cardiac transplant
-          - Myocardial infarction
-          - Syncope
-          - Implanted cardiac devices
-      - letter: C
-        name: Dental
-        slug: c-dental
-        weight: 0.5
-        topics:
-          - Dental caries
-          - Post-extraction complications
-          - Diseases of the salivary glands
-          - Gingival and periodontal disorders
-          - Disorders of the mandible
-      - letter: D
-        name: Dermatologic
-        slug: d-dermatologic
-        weight: 1.5
-        topics:
-          - Urticaria
-          - Psoriasis
-          - Stevens-Johnson syndrome/toxic epidermal necrolysis
-          - Erythema multiforme
-          - Diaper dermatitis
-          - Drug eruptions
-          - Contact dermatitis
-          - Atopic dermatitis
-          - Other skin diseases characterized by rash
-      - letter: E
-        name: Endocrine
-        slug: e-endocrine
-        weight: 1.5
-        topics:
-          - Disorders of glucose homeostasis
-          - Hypothalamic and pituitary disorders
-          - Adrenal disorders
-          - Thyroid disorders
-          - Parathyroid disorders
-          - Growth and development
-      - letter: F
-        name: Gastrointestinal
-        slug: f-gastrointestinal
-        weight: 2.5
-        topics:
-          - Pyloric stenosis
-          - GI foreign body
-          - Appendicitis
-          - Intussusception
-          - Necrotizing enterocolitis
-          - Hirschsprung disease
-          - Bowel obstruction
-          - Meckel's diverticulum
-          - Volvulus
-          - Jaundice and biliary tract disease
-          - Pancreatitis
-          - Inflammatory bowel disease
-          - Gastrointestinal bleed
-          - Diaphragmatic hernia
-      - letter: G
-        name: Hematologic
-        slug: g-hematologic
-        weight: 1.5
-        topics:
-          - name: Anemia
-            subtopics:
-              - Nutritional
-              - Membrane defects
-              - Hemoglobinopathies
-              - Aplastic
-          - Neutropenia and neutrophil dysfunction
-          - Platelet disorders
-          - Coagulation disorders
-          - Blood products transfusions (nontraumatic)
-          - Other
-      - letter: H
-        name: Infectious disease
-        slug: h-infectious-disease
-        weight: 5.0
-        topics:
-          - name: Systemic bacterial infections
-            subtopics:
-              - Bacteremia
-              - Meningococcemia
-              - Sepsis
-              - Toxin-mediated
-              - Other bacterial infections
-          - name: Systemic viral infection
-            subtopics:
-              - Infectious mononucleosis
-              - Enterovirus
-              - Herpes
-              - Measles
-              - Mumps
-              - Rubella
-              - Varicella
-              - Roseola
-              - HIV infection/AIDS
-              - Rabies
-              - Parvovirus
-              - Influenza
-              - Respiratory syncytial virus
-              - Other viral infections
-          - name: Lymphadenitis
-            subtopics:
-              - Cervical
-              - Noncervical
-              - Cat-scratch disease
-              - Mycobacterial
-          - name: Central nervous system
-            subtopics:
-              - Brain
-              - Spine
-          - name: Head and neck
-            subtopics:
-              - Nasopharyngitis
-              - Stomatitis/Gingivostomatitis
-              - Pharyngitis
-              - Otitis media
-              - Mastoiditis
-              - Otitis externa
-              - Sinusitis
-              - Peritonsillar abscess
-              - Dental abscess
-              - Deep neck space infections
-              - Tracheitis
-              - Epiglottitis
-              - Parotitis
-          - name: Ophthalmologic
-            subtopics:
-              - Conjunctivitis
-              - Preseptal and orbital cellulitis
-              - Corneal ulceration
-          - name: Cardiac
-            subtopics:
-              - Myocarditis
-              - Endocarditis
-              - Pericarditis
-              - Acute rheumatic fever
-          - name: Respiratory
-            subtopics:
-              - Pneumonia
-              - Bronchiolitis
-              - Pertussis
-              - Croup
-              - Tuberculosis
-              - Empyema
-          - name: Gastrointestinal
-            subtopics:
-              - Gastroenteritis
-              - Infectious hepatitis
-              - Perianal/Perirectal abscess
-              - Clostridium difficile
-              - Cholangitis
-              - Infectious colitis
-          - name: Skin/Soft tissue
-            subtopics:
-              - Cellulitis
-              - Abscess
-              - Erysipelas
-              - Impetigo
-              - Necrotizing fasciitis
-              - Omphalitis
-              - Mastitis
-              - Candidal infection
-              - Staphylococcal scalded skin syndrome
-              - Staphylococcal pustulosis
-          - name: Orthopedic
-            subtopics:
-              - Osteomyelitis
-              - Septic arthritis
-              - Myositis
-              - Discitis
-              - Sacroiliitis
-          - name: Urologic
-            subtopics:
-              - Cystitis
-              - Pyelonephritis
-              - Renal or perinephric abscess
-              - Epididymitis
-              - Orchitis
-              - Balanitis
-          - name: Vector-borne infections
-            subtopics:
-              - Tickborne infections
-              - Mosquito-borne infections
-              - Other vector-borne or parasitic diseases
-          - name: Sexually transmitted infections
-            subtopics:
-              - Syphilis
-              - Gonorrhea
-              - Chlamydia
-              - Herpes
-              - Urethritis/Cervicitis
-              - Trichomoniasis
-              - Bacterial vaginosis
-              - Human papillomavirus
-              - Pelvic inflammatory disease
-              - Tubo-ovarian abscess
-              - Granuloma inguinale
-          - International/Travel-related bacterial infections and outbreaks
-      - letter: I
-        name: Metabolic/Genetic emergencies
-        slug: i-metabolic-genetic
-        weight: 1.0
-        topics:
-          - Hypoglycemia
-          - Inborn errors of metabolism
-          - Abnormal newborn screening
-      - letter: J
-        name: Musculoskeletal/Orthopedic
-        slug: j-musculoskeletal-orthopedic
-        weight: 1.0
-        topics:
-          - Transient synovitis
-          - Myositis
-          - Slipped capital femoral epiphysis
-          - Avascular necrosis
-          - Repetitive stress injuries
-          - Compartment syndrome
-      - letter: K
-        name: Neurologic/Neurosurgical
-        slug: k-neurologic-neurosurgical
-        weight: 2.0
-        topics:
-          - Seizures
-          - Headaches
-          - Intracranial conditions
-          - Neuromuscular and demyelinating conditions
-          - Ventricular shunt complications
-          - Cerebrovascular conditions
-      - letter: L
-        name: Obstetrics/Gynecologic
-        slug: l-obstetrics-gynecologic
-        weight: 1.5
-        topics:
-          - Pregnancy and related complications
-          - Ectopic pregnancy
-          - Pelvic pain
-          - Dysmenorrhea/Amenorrhea
-          - Abnormal uterine bleeding
-          - Imperforate hymen
-          - Labial adhesions
-          - Ovarian torsion
-          - Pre-pubertal complaints
-      - letter: M
-        name: Oncologic
-        slug: m-oncologic
-        weight: 1.5
-        topics:
-          - Leukemia
-          - Non-Hodgkin lymphoma
-          - Hodgkin disease
-          - Wilms tumor
-          - Neuroblastoma
-          - Central nervous system tumors
-          - Retinoblastoma
-          - Sarcomas
-          - Histiocytosis
-          - Therapeutic complications
-          - Bone marrow transplant
-      - letter: N
-        name: Ophthalmologic
-        slug: n-ophthalmologic
-        weight: 1.0
-        topics:
-          - Iritis
-          - Uveitis
-          - Hordeolum/Chalazion
-          - Glaucoma
-          - Ocular foreign bodies
-          - Acute visual disturbance
-          - Papilledema
-          - Retinal detachment
-          - Proptosis
-          - Hyphema
-      - letter: O
-        name: Otolaryngologic
-        slug: o-otolaryngologic
-        weight: 1.0
-        topics:
-          - Neck masses
-          - Foreign bodies
-          - Stridor
-          - Post-operative complications
-          - Epistaxis
-      - letter: P
-        name: Pulmonary
-        slug: p-pulmonary
-        weight: 2.0
-        topics:
-          - Bronchopulmonary dysplasia
-          - Aspiration pneumonia
-          - Pulmonary edema
-          - Pulmonary hemorrhage
-          - Pleuritis
-          - Costochondritis
-          - Cystic fibrosis
-          - Asthma
-          - Pneumothorax
-          - Pleural effusion
-          - Pulmonary foreign bodies
-          - Pulmonary embolism
-          - Congenital malformations
-          - Acute respiratory distress syndrome
-          - Acute respiratory failure
-          - Lung transplant complications
-          - Ventilator dependent patient
-      - letter: Q
-        name: Renal and electrolyte
-        slug: q-renal-electrolyte
-        weight: 2.0
-        topics:
-          - Dehydration
-          - Electrolyte disorders
-          - Acid-base disorders
-          - Nephrotic/Nephritic syndromes
-          - Hypertension
-          - Acute kidney injury
-          - Renal tubular acidosis
-          - Hemolytic uremic syndrome
-          - Renal stones
-          - Myoglobinuria
-          - Renal transplant complications
-          - Hematuria
-          - Proteinuria
-      - letter: R
-        name: Rheumatologic/Immunologic
-        slug: r-rheumatologic-immunologic
-        weight: 1.0
-        topics:
-          - Juvenile idiopathic arthritis
-          - Systemic lupus erythematosus
-          - Kawasaki syndrome
-          - Anaphylactoid (Henoch-Schönlein) purpura
-          - Primary immunodeficiency disorders
-          - Other rheumatologic/immunologic conditions (eg, dermatomyositis, scleroderma, sarcoidosis)
-      - letter: S
-        name: Urologic
-        slug: s-urologic
-        weight: 1.5
-        topics:
-          - name: Penile problems
-            subtopics:
-              - Priapism
-              - Paraphimosis/Phimosis
-          - Scrotal problems
-          - Acute urinary retention
-          - Hernia
-
-  - id: 2
-    name: Resuscitation
-    slug: 02-resuscitation
-    weight: 12.5
-    universal_tasks: true
-    subdomains:
-      - letter: A
-        name: Circulation
-        slug: a-circulation
-      - letter: B
-        name: Shock
-        slug: b-shock
-        topics:
-          - Cardiogenic
-          - Distributive
-          - Hypovolemic
-          - Obstructive
-      - letter: C
-        name: Cardiopulmonary arrest
-        slug: c-cardiopulmonary-arrest
-      - letter: D
-        name: Airway
-        slug: d-airway
-      - letter: E
-        name: Respiratory failure/arrest
-        slug: e-respiratory-failure-arrest
-      - letter: F
-        name: Neurologic
-        slug: f-neurologic
-      - letter: G
-        name: Neonatal resuscitation
-        slug: g-neonatal-resuscitation
-      - letter: H
-        name: Post-resuscitation care
-        slug: h-post-resuscitation-care
-
-  - id: 3
     name: Trauma
-    slug: 03-trauma
-    weight: 17.5
-    universal_tasks: true
+    slug: 01-trauma
+    weight: 17
     subdomains:
       - letter: A
         name: Trauma resuscitation
         slug: a-trauma-resuscitation
+        description: >-
+          Understand and apply the principles and procedures of trauma resuscitation,
+          including rapid assessment, stabilization, and management of
+          life-threatening injuries and hemorrhagic shock.
       - letter: B
         name: Multisystem trauma
         slug: b-multisystem-trauma
+        description: >-
+          Identify, evaluate, and manage multisystem trauma, including prioritization
+          of life-threatening injuries, coordination of resuscitative efforts, and
+          transition to definitive care.
       - letter: C
-        name: Chest
-        slug: c-chest
+        name: Chest trauma
+        slug: c-chest-trauma
+        description: >-
+          Identify, evaluate, and manage blunt and penetrating chest trauma.
       - letter: D
-        name: Abdominal/Pelvic
-        slug: d-abdominal-pelvic
+        name: Abdominal/pelvic and genitourinary trauma
+        slug: d-abdominal-pelvic-gu-trauma
+        description: >-
+          Identify, evaluate, and manage blunt and penetrating abdominal/pelvic and
+          genitourinary trauma.
       - letter: E
-        name: Genitourinary
-        slug: e-genitourinary
+        name: Head and brain injuries
+        slug: e-head-brain-injuries
+        description: >-
+          Identify, evaluate, and manage head and brain injuries, including
+          concussions.
       - letter: F
-        name: Neurologic
-        slug: f-neurologic
+        name: Spine and spinal cord injuries
+        slug: f-spine-spinal-cord-injuries
+        description: >-
+          Identify, evaluate, and manage spine and spinal cord injuries, including
+          neurogenic shock.
       - letter: G
-        name: Head, neck, and oral maxillofacial
-        slug: g-head-neck-oral-maxillofacial
+        name: Neck, oral, and maxillofacial injuries
+        slug: g-neck-oral-maxillofacial-injuries
+        description: >-
+          Identify, evaluate, and manage blunt and penetrating neck, oral, and
+          maxillofacial injuries.
       - letter: H
-        name: Musculoskeletal
-        slug: h-musculoskeletal
+        name: Musculoskeletal injuries
+        slug: h-musculoskeletal-injuries
+        description: >-
+          Identify, evaluate, and manage blunt and penetrating musculoskeletal
+          injuries.
       - letter: I
-        name: Ophthalmologic
-        slug: i-ophthalmologic
+        name: Ophthalmologic injuries
+        slug: i-ophthalmologic-injuries
+        description: >-
+          Identify, evaluate, and manage blunt and penetrating ophthalmologic
+          injuries.
       - letter: J
-        name: Wound care
-        slug: j-wound-care
+        name: Burns and wounds
+        slug: j-burns-wounds
+        description: >-
+          Identify, evaluate, and manage burns and wounds.
       - letter: K
-        name: Burns and related injuries
-        slug: k-burns
-      - letter: L
         name: Injury prevention
-        slug: l-injury-prevention
+        slug: k-injury-prevention
+        description: >-
+          Understand and apply principles of injury prevention, including risk
+          assessment and counseling families.
+
+  - id: 2
+    name: Resuscitation
+    slug: 02-resuscitation
+    weight: 10
+    subdomains:
+      - letter: A
+        name: Hypovolemic shock
+        slug: a-hypovolemic-shock
+        description: >-
+          Identify, evaluate, and manage hypovolemic shock.
+      - letter: B
+        name: Distributive shock
+        slug: b-distributive-shock
+        description: >-
+          Identify, evaluate, and manage distributive shock (eg, septic shock,
+          anaphylactic shock).
+      - letter: C
+        name: Cardiogenic or obstructive shock
+        slug: c-cardiogenic-obstructive-shock
+        description: >-
+          Identify, evaluate, and manage cardiogenic or obstructive shock.
+      - letter: D
+        name: Cardiopulmonary arrest
+        slug: d-cardiopulmonary-arrest
+        description: >-
+          Identify, evaluate, and manage cardiopulmonary arrest, including CPR
+          initiation and post-resuscitation care.
+      - letter: E
+        name: Respiratory distress/failure/arrest
+        slug: e-respiratory-distress-failure-arrest
+        description: >-
+          Identify, evaluate, and manage respiratory distress/failure/arrest,
+          including airway positioning, non-invasive airway support,
+          nasopharyngeal/oral airways, and high-flow nasal cannula airway.
+      - letter: F
+        name: Syncope and loss of consciousness
+        slug: f-syncope-loss-of-consciousness
+        description: >-
+          Identify, evaluate, and manage syncope and loss of consciousness,
+          including brief resolved unexplained events.
+
+  - id: 3
+    name: Infectious Diseases
+    slug: 03-infectious-diseases
+    weight: 8
+    subdomains:
+      - letter: A
+        name: Systemic bacterial infections
+        slug: a-systemic-bacterial-infections
+        description: >-
+          Identify, evaluate, and manage systemic bacterial infections (eg, sepsis,
+          bacteremia, meningococcemia).
+      - letter: B
+        name: Systemic viral infections
+        slug: b-systemic-viral-infections
+        description: >-
+          Identify, evaluate, and manage systemic viral infections (eg, enterovirus,
+          herpes, measles, mumps, rubella, varicella, roseola, HIV infection/AIDS,
+          rabies, parvovirus, influenza, respiratory syncytial virus, COVID-19,
+          Epstein-Barr virus), including isolation precautions.
+      - letter: C
+        name: Head, neck, central nervous system, and ophthalmologic infections
+        slug: c-head-neck-cns-eye-infections
+        description: >-
+          Identify, evaluate, and manage infections affecting the head and neck
+          (eg, peritonsillar abscess, retropharyngeal abscess, Potts puffy tumor,
+          mastoiditis, otitis media, otitis externa, lymphadenitis, dental abscess,
+          tracheitis, epiglottitis, parotitis), the central nervous system
+          (eg, encephalitis, meningitis, brain abscess), and eyes (eg, orbital
+          cellulitis, herpes keratitis), including specialty service consultation.
+      - letter: D
+        name: Cardiac infections
+        slug: d-cardiac-infections
+        description: >-
+          Identify, evaluate, and manage cardiac infections (eg, endocarditis,
+          myocarditis, pericarditis), including specialty service consultation.
+      - letter: E
+        name: Respiratory infections
+        slug: e-respiratory-infections
+        description: >-
+          Identify, evaluate, and manage respiratory infections (eg, pneumonia,
+          bronchiolitis, pertussis, croup, tuberculosis, empyema), including
+          isolation precautions.
+      - letter: F
+        name: Gastrointestinal infections
+        slug: f-gastrointestinal-infections
+        description: >-
+          Identify, evaluate, and manage gastrointestinal infections (eg, hepatitis,
+          pancreatitis, perianal/perirectal abscess, cholangitis, infectious colitis,
+          diarrheal illnesses, infant botulism), including isolation precautions.
+      - letter: G
+        name: Skin/soft tissue and musculoskeletal infections
+        slug: g-skin-soft-tissue-msk-infections
+        description: >-
+          Identify, evaluate, and manage skin and soft tissue infections (eg,
+          cellulitis, abscess, impetigo, necrotizing fasciitis, omphalitis,
+          staphylococcal scalded skin syndrome) and musculoskeletal infections (eg,
+          osteomyelitis, septic arthritis, myositis, discitis, flexor tenosynovitis),
+          including isolation precautions.
+      - letter: H
+        name: Urologic and sexually transmitted infections
+        slug: h-urologic-sti
+        description: >-
+          Identify, evaluate, and manage urologic infections (eg, urinary tract
+          infection) and sexually transmitted infections, including providing
+          psychosocial support and safeguarding confidentiality.
+      - letter: I
+        name: Vector-borne and travel-related infections
+        slug: i-vector-borne-travel-infections
+        description: >-
+          Identify, evaluate, and manage vector-borne infections (eg, Lyme disease,
+          Rocky Mountain spotted fever, malaria) and travel-related infections.
 
   - id: 4
-    name: Toxicology
-    slug: 04-toxicology
-    weight: 5.0
-    universal_tasks: true
+    name: Procedures
+    slug: 04-procedures
+    weight: 5
     subdomains:
       - letter: A
-        name: Toxidromes/Antidotes
-        slug: a-toxidromes-antidotes
+        name: Airway procedures
+        slug: a-airway-procedures
+        topics:
+          - name: Endotracheal intubation
+            description: >-
+              Understand endotracheal intubation, including indications, preparation
+              steps, contraindications, alternatives, risks, benefits, and potential
+              complications.
+          - name: Rapid sequence intubation
+            description: >-
+              Understand medication usage in rapid sequence intubation, including
+              indications, preparation steps, contraindications, alternatives,
+              risks, benefits, and potential complications.
+          - name: Basic and advanced airway techniques
+            description: >-
+              Identify, evaluate, and manage a difficult or failed airway using a
+              stepwise approach, including the selection and use of basic and
+              advanced airway techniques (eg, bag mask ventilation, supraglottic
+              airway, nasotracheal intubation, fiberoptic intubation, tracheostomy
+              tube replacement, surgical airway) and proactive anticipation and
+              management of complications.
       - letter: B
-        name: Decontamination (non-disaster)
-        slug: b-decontamination
+        name: Breathing procedures
+        slug: b-breathing-procedures
+        description: >-
+          Understand breathing procedures (eg, thoracentesis, thoracostomy),
+          including indications, preparation steps, contraindications, alternatives,
+          risks, benefits, and potential complications.
       - letter: C
-        name: Medications
-        slug: c-medications
+        name: Circulation procedures
+        slug: c-circulation-procedures
+        topics:
+          - name: Emergency vascular access
+            description: >-
+              Understand emergency vascular access, including indications,
+              preparation steps, contraindications, alternatives, risks, benefits,
+              and potential complications.
+          - name: Defibrillation, cardioversion, cardiac pacing
+            description: >-
+              Understand defibrillation, cardioversion, and cardiac pacing,
+              including indications, preparation steps, contraindications,
+              alternatives, risks, benefits, and potential complications.
+          - name: Pericardiocentesis
+            description: >-
+              Understand pericardiocentesis, including indications, preparation
+              steps, contraindications, alternatives, risks, benefits, and potential
+              complications.
       - letter: D
-        name: Household agents
-        slug: d-household-agents
+        name: Sedation, analgesia, and anesthesia
+        slug: d-sedation-analgesia-anesthesia
+        topics:
+          - name: Procedural sedation/analgesia
+            description: >-
+              Understand procedural sedation/analgesia including indications,
+              preparation steps, contraindications, risks, benefits, pharmacology,
+              potential complications, and special considerations for higher risk
+              patients.
+          - name: Local and regional anesthesia
+            description: >-
+              Understand local and regional anesthesia, including indications,
+              preparation steps, contraindications, alternatives, risks, benefits,
+              and potential complications.
       - letter: E
-        name: Plants
-        slug: e-plants
+        name: Point of care ultrasound
+        slug: e-point-of-care-ultrasound
+        topics:
+          - name: eFAST
+            description: >-
+              Understand extended focused assessment with sonography in trauma
+              (eFAST), including indications and limitations.
+          - name: Cardiovascular
+            description: >-
+              Understand cardiovascular point of care ultrasound, including
+              indications and limitations.
+          - name: Skin and soft tissue
+            description: >-
+              Understand skin and soft tissue point-of-care ultrasound, including
+              indications (eg, cellulitis, abscess, subcutaneous foreign bodies)
+              and limitations.
       - letter: F
-        name: Tobacco
-        slug: f-tobacco
+        name: Laceration repair
+        slug: f-laceration-repair
+        description: >-
+          Understand laceration repair, including indications, alternatives, risks,
+          benefits, and potential complications.
       - letter: G
-        name: Substances of abuse including withdrawal syndromes
-        slug: g-substances-of-abuse
+        name: Incision and drainage
+        slug: g-incision-drainage
+        description: >-
+          Understand incision and drainage, including indications, alternatives,
+          risks, benefits, and potential complications.
       - letter: H
-        name: Carbon monoxide/inhaled toxins
-        slug: h-carbon-monoxide-inhaled-toxins
+        name: Orthopedic procedures
+        slug: h-orthopedic-procedures
+        description: >-
+          Understand orthopedic procedures (eg, arthrocentesis, joint reduction,
+          radial head subluxation, fracture reduction), including indications,
+          alternatives, risks, benefits, and potential complications.
       - letter: I
-        name: Heavy metals
-        slug: i-heavy-metals
+        name: Foreign body removal
+        slug: i-foreign-body-removal
+        description: >-
+          Understand approaches to foreign body removal depending on foreign body
+          location, including indications, alternatives, risks, benefits, and
+          potential complications.
       - letter: J
-        name: Alcohols
-        slug: j-alcohols
+        name: Gastrostomy tube replacement
+        slug: j-gastrostomy-tube-replacement
+        description: >-
+          Understand gastrostomy tube replacement, including indications,
+          alternatives, risks, benefits, and potential complications.
       - letter: K
-        name: Hydrocarbons
-        slug: k-hydrocarbons
+        name: Lumbar puncture
+        slug: k-lumbar-puncture
+        description: >-
+          Understand lumbar puncture, including indications, alternatives, risks,
+          benefits, and potential complications.
       - letter: L
-        name: Organophosphates
-        slug: l-organophosphates
+        name: Head and neck procedures
+        slug: l-head-neck-procedures
+        description: >-
+          Understand head and neck procedures (eg, ear canal foreign body removal,
+          auricular hematoma drainage, lateral canthotomy, nasal septal hematoma
+          drainage, nose foreign body removal), including indications, alternatives,
+          risks, benefits, and potential complications.
 
   - id: 5
-    name: Environmental Emergencies
-    slug: 05-environmental-emergencies
-    weight: 4.0
-    universal_tasks: true
-    subdomains:
-      - letter: A
-        name: Altitude and hyperbaric emergencies
-        slug: a-altitude-hyperbaric
-      - letter: B
-        name: Animal and human bites
-        slug: b-animal-human-bites
-      - letter: C
-        name: Envenomations, bites, and stings
-        slug: c-envenomations-bites-stings
-      - letter: D
-        name: Drowning/Submersion injury
-        slug: d-drowning-submersion
-      - letter: E
-        name: Electrical injuries/lightning
-        slug: e-electrical-lightning
-      - letter: F
-        name: Heat-related conditions
-        slug: f-heat-related
-      - letter: G
-        name: Cold-related conditions
-        slug: g-cold-related
-
-  - id: 6
-    name: Child Abuse and Maltreatment
-    slug: 06-child-abuse-maltreatment
-    weight: 4.5
-    universal_tasks: true
-    subdomains:
-      - letter: A
-        name: Physical abuse
-        slug: a-physical-abuse
-      - letter: B
-        name: Neglect
-        slug: b-neglect
-      - letter: C
-        name: Sexual assault and abuse
-        slug: c-sexual-assault-abuse
-      - letter: D
-        name: Psychological/Emotional abuse
-        slug: d-psychological-emotional-abuse
-      - letter: E
-        name: Bullying
-        slug: e-bullying
-      - letter: F
-        name: Child abuse in the medical setting
-        slug: f-abuse-in-medical-setting
-      - letter: G
-        name: Abandonment
-        slug: g-abandonment
-      - letter: H
-        name: Human trafficking
-        slug: h-human-trafficking
-      - letter: I
-        name: Legal issues and reporting
-        slug: i-legal-issues-reporting
-
-  - id: 7
-    name: Behavioral Health Conditions and Psychosocial Issues
-    slug: 07-behavioral-health
-    weight: 5.0
-    universal_tasks: true
-    subdomains:
-      - letter: A
-        name: Approach to the child and family/family-centered care
-        slug: a-family-centered-care
-      - letter: B
-        name: Psychosocial development by age group
-        slug: b-psychosocial-development
-      - letter: C
-        name: Autism spectrum disorder
-        slug: c-autism-spectrum-disorder
-      - letter: D
-        name: Depression
-        slug: d-depression
-      - letter: E
-        name: Post-traumatic stress disorder
-        slug: e-ptsd
-      - letter: F
-        name: Nonsuicidal self-injury
-        slug: f-nonsuicidal-self-injury
-      - letter: G
-        name: Suicide
-        slug: g-suicide
-      - letter: H
-        name: Attention deficit-hyperactivity disorder
-        slug: h-adhd
-      - letter: I
-        name: Conduct disorder
-        slug: i-conduct-disorder
-      - letter: J
-        name: Agitated/Aggressive patient
-        slug: j-agitated-aggressive-patient
-      - letter: K
-        name: Homicidal patient
-        slug: k-homicidal-patient
-      - letter: L
-        name: Psychosis
-        slug: l-psychosis
-      - letter: M
-        name: Substance abuse and chemical dependence
-        slug: m-substance-abuse
-      - letter: N
-        name: Anxiety disorder
-        slug: n-anxiety-disorder
-      - letter: O
-        name: Obsessive-compulsive disorder
-        slug: o-ocd
-      - letter: P
-        name: Eating disorders
-        slug: p-eating-disorders
-      - letter: Q
-        name: Somatoform disorders (conversion, chronic pain)
-        slug: q-somatoform-disorders
-      - letter: R
-        name: Gender dysphoria
-        slug: r-gender-dysphoria
-      - letter: S
-        name: Screening
-        slug: s-screening
-        topics:
-          - Psychiatric safety screening
-          - Medical screening of the patient with psychiatric complaints
-      - letter: T
-        name: Violence and children
-        slug: t-violence-and-children
-        topics:
-          - Post-traumatic stress
-          - Intimate partner violence
-          - Community violence
-      - letter: U
-        name: Common behavioral complaints
-        slug: u-common-behavioral-complaints
-        topics:
-          - Colic
-          - Prolonged crying
-          - Breath holding
-          - Hyperventilation
-
-  - id: 8
     name: Special Populations
-    slug: 08-special-populations
-    weight: 3.0
-    universal_tasks: true
+    slug: 05-special-populations
+    weight: 3
     subdomains:
       - letter: A
         name: Transplant patients
         slug: a-transplant-patients
+        description: >-
+          Evaluate and manage transplant patients (eg, heart, lung, kidney, liver,
+          bone marrow), including rejection, infection, and complications.
       - letter: B
         name: Medically and technologically complex patients
         slug: b-medically-complex-patients
+        description: >-
+          Evaluate and manage medically and technologically complex patients (eg,
+          tracheostomy and/or ventilator dependent patients, gastrostomy dependent
+          patients, genetic disorders, total parenteral nutrition dependent
+          patients).
       - letter: C
-        name: Patients with autism spectrum disorder
-        slug: c-autism-spectrum-disorder
+        name: Adult patients
+        slug: c-adult-patients
+        description: >-
+          Evaluate and stabilize adult patients presenting in the pediatric
+          emergency department (eg, altered mental status, abdominal pain,
+          cardiopulmonary arrest, chest pain, neurologic deficit, shortness of
+          breath, syncope), including transfer of care.
       - letter: D
-        name: Adult patient
-        slug: d-adult-patient
-        topics:
-          - Altered mental status
-          - Abdominal pain
-          - Cardiopulmonary arrest
-          - Chest pain
-          - Neurologic deficits
-          - Shortness of breath
-          - Syncope
+        name: Hospice and palliative care patients
+        slug: d-hospice-palliative-care
+        description: >-
+          Evaluate and manage hospice or palliative care patients, including
+          end-of-life issues and chronic pain.
+
+  - id: 6
+    name: Neonatal Conditions
+    slug: 06-neonatal-conditions
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Neonatal conditions
+        slug: a-neonatal-conditions
+        description: >-
+          Identify, evaluate, and manage neonatal conditions (eg, fever, necrotizing
+          enterocolitis, seizures, TORCH infections, neonatal jaundice, abnormal
+          newborn screening).
+      - letter: B
+        name: Neonatal resuscitation
+        slug: b-neonatal-resuscitation
+        description: >-
+          Understand and apply neonatal resuscitation principles.
+
+  - id: 7
+    name: Toxicology
+    slug: 07-toxicology
+    weight: 4
+    subdomains:
+      - letter: A
+        name: Toxicology concepts
+        slug: a-toxicology-concepts
+        description: >-
+          Identify, evaluate, and manage characteristic toxidromes, administer
+          targeted antidotes, and implement appropriate decontamination strategies
+          (eg, activated charcoal, irrigation) to reduce toxin absorption.
+      - letter: B
+        name: Medications, household agents, plants
+        slug: b-medications-household-agents-plants
+        description: >-
+          Identify, evaluate, and manage accidental or intentional ingestions of or
+          exposures to medications, household agents, or plants.
+      - letter: C
+        name: Substances of abuse and associated withdrawal symptoms
+        slug: c-substances-of-abuse
+        description: >-
+          Identify, evaluate, and manage accidental or intentional ingestions of or
+          exposures to substances of abuse (eg, tobacco, ethanol, marijuana),
+          including the assessment and management of associated withdrawal symptoms.
+      - letter: D
+        name: Heavy metals, toxic alcohols, organophosphates, and other toxins
+        slug: d-heavy-metals-alcohols-organophosphates
+        description: >-
+          Identify, evaluate, and manage accidental or intentional ingestions of or
+          exposures to heavy metals, toxic alcohols, organophosphates, and other
+          toxins.
       - letter: E
-        name: Palliative care patients
-        slug: e-palliative-care-patients
+        name: Carbon monoxide/inhaled toxins, hydrocarbons
+        slug: e-carbon-monoxide-inhaled-hydrocarbons
+        description: >-
+          Identify, evaluate, and manage accidental or intentional ingestions of or
+          exposures to carbon monoxide/inhaled toxins, hydrocarbons.
+
+  - id: 8
+    name: Child Abuse and Maltreatment
+    slug: 08-child-abuse-maltreatment
+    weight: 4
+    subdomains:
+      - letter: A
+        name: Physical abuse
+        slug: a-physical-abuse
+        description: >-
+          Identify, evaluate, and manage patients with suspected physical abuse,
+          including legal issues and reporting.
+      - letter: B
+        name: Sexual assault and abuse
+        slug: b-sexual-assault-abuse
+        description: >-
+          Identify, evaluate, and manage patients with suspected sexual assault and
+          abuse, including legal issues and reporting.
+      - letter: C
+        name: Child abuse in the medical setting
+        slug: c-abuse-in-medical-setting
+        description: >-
+          Identify, evaluate, and manage patients with suspected child abuse in the
+          medical setting, including legal issues and reporting.
+      - letter: D
+        name: Psychological/emotional abuse
+        slug: d-psychological-emotional-abuse
+        description: >-
+          Identify, evaluate, and manage patients with suspected
+          psychological/emotional abuse (eg, bullying, neglect, abandonment, human
+          trafficking), including legal issues and reporting.
 
   - id: 9
-    name: Procedures
-    slug: 09-procedures
-    weight: 6.0
-    universal_tasks: false
-    note: >-
-      Exam questions in this domain assess the knowledge areas related to common
-      procedures in pediatric emergency medicine: indications, risks and benefits,
-      contraindications, technique, and complications.
+    name: Behavioral Health Conditions and Psychosocial Issues
+    slug: 09-behavioral-health
+    weight: 3
     subdomains:
       - letter: A
-        name: Cardiopulmonary life support procedures
-        slug: a-cardiopulmonary-life-support
-        topics:
-          - name: Emergency vascular access
-            subtopics:
-              - Intravenous access
-              - Intraosseous access
-              - Central venous access
-              - Umbilical vessel access
-          - name: Dysrhythmia
-            subtopics:
-              - Defibrillation
-              - Cardioversion
-          - name: Advanced airway procedures
-            subtopics:
-              - Endotracheal intubation
-              - Approach to the difficult airway
-              - Surgical airway
-              - Supraglottic airway
-          - Pericardiocentesis
-          - Thoracentesis/Thoracostomy
+        name: Acute psychiatric emergencies
+        slug: a-acute-psychiatric-emergencies
+        description: >-
+          Identify, evaluate, and manage patients presenting with acute psychiatric
+          emergencies (eg, suicidal ideation or behavior, homicidal threats, acute
+          psychosis, nonsuicidal self-injury, severe agitation or aggression),
+          including ensuring patient and staff safety.
       - letter: B
-        name: Procedural sedation/analgesia
-        slug: b-procedural-sedation-analgesia
-        topics:
-          - Local and regional anesthesia
-          - Alternative modes of administration (eg, nitrous)
-          - Sedation of the agitated/violent patient
-          - Sedation of patient with autism spectrum disorder or developmental delay
+        name: Psychiatric disorders
+        slug: b-psychiatric-disorders
+        description: >-
+          Identify, evaluate, and manage patients presenting with psychiatric
+          disorders (eg, depression, post-traumatic stress disorder, anxiety and
+          obsessive-compulsive disorder, psychosis, substance abuse and chemical
+          dependence, eating disorders, somatoform disorders), including ensuring
+          patient and staff safety.
       - letter: C
-        name: Laceration repair
-        slug: c-laceration-repair
+        name: Psychological distress
+        slug: c-psychological-distress
+        description: >-
+          Identify, evaluate, and manage patients presenting with psychological
+          distress (eg, gender dysphoria, home stressors, food insecurity,
+          homelessness).
       - letter: D
-        name: Incision and drainage
-        slug: d-incision-drainage
+        name: Neurodevelopmental disorders
+        slug: d-neurodevelopmental-disorders
+        description: >-
+          Identify, evaluate, and manage patients presenting with neurodevelopmental
+          disorders (eg, autism spectrum disorder, attention deficit-hyperactivity
+          disorder, developmental delay), including ensuring patient and staff
+          safety.
       - letter: E
-        name: Lateral canthotomy
-        slug: e-lateral-canthotomy
-      - letter: F
-        name: Cardiac pacing
-        slug: f-cardiac-pacing
-      - letter: G
-        name: High-quality CPR
-        slug: g-high-quality-cpr
-      - letter: H
-        name: Hernia reduction
-        slug: h-hernia-reduction
-      - letter: I
-        name: Orthopedic procedures
-        slug: i-orthopedic-procedures
-      - letter: J
-        name: Foreign body removal/cerumen
-        slug: j-foreign-body-removal
-      - letter: K
-        name: Nasal packing
-        slug: k-nasal-packing
-      - letter: L
-        name: Point of care ultrasound
-        slug: l-point-of-care-ultrasound
-      - letter: M
-        name: Gastrostomy tube replacement
-        slug: m-gastrostomy-tube-replacement
-      - letter: N
-        name: Lumbar puncture/ventricular shunt tap
-        slug: n-lumbar-puncture-shunt-tap
+        name: Behavioral disorders and complaints
+        slug: e-behavioral-disorders-complaints
+        description: >-
+          Identify, evaluate, and manage patients presenting with behavioral
+          disorders and complaints (eg, colic, prolonged crying, breath holding,
+          hyperventilation, conduct disorder, adverse childhood events), including
+          ensuring patient and staff safety.
 
   - id: 10
-    name: Disaster Preparedness
-    slug: 10-disaster-preparedness
-    weight: 2.0
-    universal_tasks: false
-    note: &systems-note >-
-      Exam questions in this domain focus on systems-based practice in pediatric
-      emergency medicine and ask examinees to prioritize the acute needs of patients
-      in the context of a dynamic environment, taking into account resource
-      availability, team and facility capacity and capabilities, and administrative
-      and legal responsibilities.
+    name: Cardiovascular
+    slug: 10-cardiovascular
+    weight: 3
     subdomains:
       - letter: A
-        name: Mass casualty management
-        slug: a-mass-casualty-management
+        name: Congenital heart disease
+        slug: a-congenital-heart-disease
+        description: >-
+          Identify, evaluate, and manage congenital heart disease (eg, cyanotic and
+          non-cyanotic defects), including surgeries and post-surgical complications.
       - letter: B
-        name: Bioterrorism
-        slug: b-bioterrorism
+        name: Dysrhythmias and implanted cardiac devices
+        slug: b-dysrhythmias-implanted-devices
+        description: >-
+          Identify, evaluate, and manage dysrhythmias and implanted cardiac devices
+          (eg, defibrillators, pacemakers).
       - letter: C
-        name: Chemical terrorism
-        slug: c-chemical-terrorism
-      - letter: D
-        name: Disaster triage
-        slug: d-disaster-triage
-      - letter: E
-        name: Radiation exposure
-        slug: e-radiation-exposure
-      - letter: F
-        name: Hazardous material decontamination
-        slug: f-hazmat-decontamination
-      - letter: G
-        name: Community resource awareness (eg, strategic national stockpile, personal protective equipment, CHEMPACK, CDC/NIH resources)
-        slug: g-community-resource-awareness
+        name: Cardiomyopathy and heart failure
+        slug: c-cardiomyopathy-heart-failure
+        description: >-
+          Identify, evaluate, and manage cardiomyopathy and heart failure.
 
   - id: 11
-    name: Emergency Medical Services and Transport
-    slug: 11-ems-and-transport
-    weight: 2.0
-    universal_tasks: false
-    note: *systems-note
+    name: Pulmonary
+    slug: 11-pulmonary
+    weight: 3
     subdomains:
       - letter: A
-        name: EMTALA
-        slug: a-emtala
+        name: Acute asthma exacerbations
+        slug: a-acute-asthma-exacerbations
+        description: >-
+          Identify, evaluate, and manage acute asthma exacerbations, including
+          complications from asthma.
       - letter: B
-        name: EMS system organization and administration
-        slug: b-ems-organization
+        name: Acute and chronic respiratory failure
+        slug: b-acute-chronic-respiratory-failure
+        description: >-
+          Identify, evaluate, and manage acute and chronic respiratory failure (eg,
+          acute respiratory distress syndrome, ventilator dependent patient).
       - letter: C
-        name: EMS personnel
-        slug: c-ems-personnel
+        name: Chronic pulmonary diseases
+        slug: c-chronic-pulmonary-diseases
+        description: >-
+          Identify, evaluate, and manage chronic pulmonary diseases (eg, chronic
+          lung disease/bronchopulmonary dysplasia, congenital malformations, cystic
+          fibrosis).
       - letter: D
-        name: Equipment and transportation
-        slug: d-equipment-transportation
-        topics:
-          - Scene transport
-          - Interhospital transport considerations
-      - letter: E
-        name: EMS for children principles — pediatric readiness, etc.
-        slug: e-ems-for-children
-      - letter: F
-        name: Medical direction
-        slug: f-medical-direction
-      - letter: G
-        name: Legal considerations
-        slug: g-legal-considerations
+        name: Acute pulmonary diseases
+        slug: d-acute-pulmonary-diseases
+        description: >-
+          Identify, evaluate, and manage acute pulmonary diseases (eg, aspiration
+          pneumonia, pulmonary edema, pneumothorax, pulmonary hemorrhage, pleural
+          effusion, pulmonary foreign bodies, pulmonary embolism).
+
   - id: 12
-    name: Emergency Department Administration and Operations
-    slug: 12-ed-administration-operations
-    weight: 2.0
-    universal_tasks: false
-    note: *systems-note
+    name: Hematologic and Oncologic
+    slug: 12-hematologic-oncologic
+    weight: 4
     subdomains:
       - letter: A
-        name: Caregiver presence during resuscitation and procedures
-        slug: a-caregiver-presence
+        name: Hematologic cell line problems
+        slug: a-hematologic-cell-line-problems
+        description: >-
+          Identify, evaluate, and manage hematologic cell line problems (eg,
+          anemias, aplastic anemia, cyclic neutropenia, immune thrombocytopenia,
+          platelet disorders).
       - letter: B
-        name: Documentation and reporting services
-        slug: b-documentation-reporting
+        name: Leukemias and lymphomas
+        slug: b-leukemias-lymphomas
+        description: >-
+          Identify, evaluate, and manage leukemias and lymphomas, including
+          neutropenic fever and complications of chemotherapy.
       - letter: C
-        name: Interpreter usage
-        slug: c-interpreter-usage
+        name: Hemophilias and coagulation disorders
+        slug: c-hemophilias-coagulation-disorders
+        description: >-
+          Identify, evaluate, and manage hemophilias and coagulation disorders,
+          including deep vein thrombosis.
       - letter: D
-        name: Risk management
-        slug: d-risk-management
+        name: Solid tumors
+        slug: d-solid-tumors
+        description: >-
+          Identify, evaluate, and manage solid tumors and their complications.
       - letter: E
-        name: Legal/Ethical
-        slug: e-legal-ethical
-        topics:
-          - Consent
-          - Treatment refusal and acting against medical advice
-          - Patient bill of rights
-          - Regulatory requirements
-          - Impaired provider
-          - Electronic communication/social media
+        name: Blood product administration
+        slug: e-blood-product-administration
+        description: >-
+          Manage blood product administration, including indications and
+          complications.
       - letter: F
-        name: Interpersonal and communication skills
-        slug: f-interpersonal-communication
-        topics:
-          - De-escalation and conflict management
-          - Delivery of difficult news
-          - Cultural awareness
-          - Handoffs/Transitions of care
-          - Informed consent considerations
-      - letter: G
-        name: Professionalism
-        slug: g-professionalism
-        topics:
-          - Error disclosure
-          - Conflict of interest
+        name: Hemoglobinopathies
+        slug: f-hemoglobinopathies
+        description: >-
+          Identify, evaluate, and manage hemoglobinopathies (eg, sickle cell
+          disease, thalassemia, spherocytosis).
 
   - id: 13
+    name: Gastrointestinal
+    slug: 13-gastrointestinal
+    weight: 3
+    subdomains:
+      - letter: A
+        name: Obstructive conditions
+        slug: a-obstructive-conditions
+        description: >-
+          Identify, evaluate, and manage gastrointestinal obstructive conditions
+          (eg, pyloric stenosis, bowel obstruction, intussusception, Hirschsprung
+          disease, volvulus, ingested foreign body, inguinal hernia).
+      - letter: B
+        name: Inflammatory conditions
+        slug: b-inflammatory-conditions
+        description: >-
+          Identify, evaluate, and manage gastrointestinal inflammatory conditions
+          (eg, inflammatory bowel disease, appendicitis, pancreatitis).
+      - letter: C
+        name: Bleeding conditions
+        slug: c-bleeding-conditions
+        description: >-
+          Identify, evaluate, and manage gastrointestinal bleeding conditions (eg,
+          Meckel diverticulum, gastrointestinal bleed, gastritis, rectal prolapse).
+      - letter: D
+        name: Jaundice and biliary tract conditions
+        slug: d-jaundice-biliary-tract
+        description: >-
+          Identify, evaluate, and manage gastrointestinal jaundice and biliary tract
+          conditions (eg, cholangitis, hepatitis, cirrhosis, jaundice).
+
+  - id: 14
+    name: Neurologic/Neurosurgical
+    slug: 14-neurologic-neurosurgical
+    weight: 3
+    subdomains:
+      - letter: A
+        name: Seizures
+        slug: a-seizures
+        description: >-
+          Identify, evaluate, and manage seizures (eg, status epilepticus, febrile
+          and afebrile, psychogenic non-epileptic seizure).
+      - letter: B
+        name: Intracranial conditions
+        slug: b-intracranial-conditions
+        description: >-
+          Identify, evaluate, and manage intracranial conditions (eg, headaches,
+          strokes, arterial venous malformations, tumors, Chiari malformations).
+      - letter: C
+        name: Neuromuscular and demyelinating conditions
+        slug: c-neuromuscular-demyelinating
+        description: >-
+          Identify, evaluate, and manage neuromuscular and demyelinating conditions
+          (eg, acute disseminated encephalomyelitis, myasthenia gravis, multiple
+          sclerosis, transverse myelitis, Guillain-Barre syndrome).
+      - letter: D
+        name: Hydrocephalus and related complications
+        slug: d-hydrocephalus-complications
+        description: >-
+          Identify, evaluate, and manage hydrocephalus and related complications,
+          including ventricular shunt malfunction.
+
+  - id: 15
+    name: Environmental Emergencies
+    slug: 15-environmental-emergencies
+    weight: 3
+    subdomains:
+      - letter: A
+        name: Altitude-related illnesses and hyperbaric emergencies
+        slug: a-altitude-hyperbaric
+        description: >-
+          Identify, evaluate, and manage altitude-related illnesses and hyperbaric
+          emergencies.
+      - letter: B
+        name: Animal and human bites
+        slug: b-animal-human-bites
+        description: >-
+          Identify, evaluate, and manage animal and human bites.
+      - letter: C
+        name: Envenomations, bites, and stings
+        slug: c-envenomations-bites-stings
+        description: >-
+          Identify, evaluate, and manage envenomations, bites, and stings.
+      - letter: D
+        name: Submersion injury
+        slug: d-submersion-injury
+        description: >-
+          Identify, evaluate, and manage submersion injuries.
+      - letter: E
+        name: Electrical injuries and lightning exposure
+        slug: e-electrical-lightning
+        description: >-
+          Identify, evaluate, and manage electrical injuries and lightning exposure.
+      - letter: F
+        name: Heat-related conditions
+        slug: f-heat-related
+        description: >-
+          Identify, evaluate, and manage heat-related conditions.
+      - letter: G
+        name: Cold-related conditions
+        slug: g-cold-related
+        description: >-
+          Identify, evaluate, and manage cold-related conditions.
+
+  - id: 16
+    name: Allergic, Rheumatologic, Immunologic
+    slug: 16-allergic-rheumatologic-immunologic
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Allergic conditions
+        slug: a-allergic-conditions
+        description: >-
+          Identify, evaluate, and manage allergic conditions (eg, anaphylaxis,
+          angioedema, food allergies).
+      - letter: B
+        name: Rheumatologic conditions
+        slug: b-rheumatologic-conditions
+        description: >-
+          Identify, evaluate, and manage rheumatologic conditions (eg, juvenile
+          idiopathic arthritis, systemic lupus erythematosus, dermatomyositis,
+          scleroderma, sarcoidosis).
+      - letter: C
+        name: Immunologic conditions
+        slug: c-immunologic-conditions
+        description: >-
+          Identify, evaluate, and manage immunologic conditions (eg, Kawasaki
+          syndrome, IgA vasculitis, primary immunodeficiency disorders).
+
+  - id: 17
+    name: Eyes, Ears, Nose, Oral, Neck
+    slug: 17-eyes-ears-nose-oral-neck
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Eyes
+        slug: a-eyes
+        description: >-
+          Identify, evaluate, and manage eye conditions (eg, iritis, uveitis,
+          hordeolum/chalazion, glaucoma, ocular foreign bodies, acute visual
+          disturbance, papilledema, retinal detachment, hyphema).
+      - letter: B
+        name: Ear
+        slug: b-ear
+        description: >-
+          Identify, evaluate, and manage ear conditions (eg, perichondritis,
+          perforated tympanic membrane).
+      - letter: C
+        name: Nose
+        slug: c-nose
+        description: >-
+          Identify, evaluate, and manage nasal conditions (eg, epistaxis).
+      - letter: D
+        name: Oral
+        slug: d-oral
+        description: >-
+          Identify, evaluate, and manage oral conditions (eg, dental caries,
+          post-extraction complications, disease of the salivary glands, gingival
+          and periodontal disorders, disorders of the mandible).
+      - letter: E
+        name: Neck
+        slug: e-neck
+        description: >-
+          Identify, evaluate, and manage neck conditions (eg, neck masses,
+          post-tonsillectomy complications, upper airway obstruction).
+
+  - id: 18
+    name: Renal and Electrolyte
+    slug: 18-renal-electrolyte
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Fluid and electrolyte disorders
+        slug: a-fluid-electrolyte-disorders
+        description: >-
+          Identify, evaluate, and manage fluid and electrolyte disorders (eg,
+          dehydration, acid-base disorders, rhabdomyolysis).
+      - letter: B
+        name: Kidney disease
+        slug: b-kidney-disease
+        description: >-
+          Identify, evaluate, and manage kidney disease (eg, nephrotic/nephritic
+          syndromes, acute kidney injury, renal tubular acidosis, hemolytic uremic
+          syndrome, hematuria, proteinuria).
+      - letter: C
+        name: Hypertensive emergencies
+        slug: c-hypertensive-emergencies
+        description: >-
+          Identify, evaluate, and manage hypertensive emergencies.
+
+  - id: 19
+    name: Dermatologic
+    slug: 19-dermatologic
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Acute dermatologic emergencies
+        slug: a-acute-dermatologic-emergencies
+        description: >-
+          Identify, evaluate, and manage acute dermatologic emergencies (eg, contact
+          dermatitis, urticaria, drug rash/reaction with eosinophilia and systemic
+          symptoms (DRESS), serum sickness, serum sickness-like reaction,
+          Stevens-Johnson syndrome/toxic epidermal necrolysis, erythema and
+          urticaria multiforme).
+      - letter: B
+        name: Complications of chronic dermatologic conditions
+        slug: b-chronic-dermatologic-complications
+        description: >-
+          Identify, evaluate, and manage complications of chronic dermatologic
+          conditions (eg, complications of eczema, complications of hemangiomas,
+          pyogenic granuloma).
+
+  - id: 20
+    name: Endocrine
+    slug: 20-endocrine
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Disorders of glucose homeostasis
+        slug: a-glucose-homeostasis
+        description: >-
+          Identify, evaluate, and manage disorders of glucose homeostasis (eg,
+          hypoglycemia, diabetic ketoacidosis).
+      - letter: B
+        name: Hypothalamic and pituitary disorders
+        slug: b-hypothalamic-pituitary
+        description: >-
+          Identify, evaluate, and manage hypothalamic and pituitary disorders (eg,
+          diabetes insipidus, syndrome of inappropriate antidiuretic hormone
+          secretion (SIADH), panhypopituitarism).
+      - letter: C
+        name: Adrenal, thyroid, and parathyroid disorders and vitamin D deficiency
+        slug: c-adrenal-thyroid-parathyroid-vitd
+        description: >-
+          Identify, evaluate, and manage adrenal, thyroid, and parathyroid disorders
+          and vitamin D deficiency (eg, adrenal crisis, thyroid storm, rickets).
+
+  - id: 21
+    name: Obstetrics/Gynecologic
+    slug: 21-obstetrics-gynecologic
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Obstetric conditions
+        slug: a-obstetric-conditions
+        description: >-
+          Identify, evaluate, and manage obstetric conditions (eg, pregnancy and
+          complications, ectopic pregnancy, emergent delivery and complications).
+      - letter: B
+        name: Gynecologic conditions
+        slug: b-gynecologic-conditions
+        description: >-
+          Identify, evaluate, and manage gynecologic conditions (eg, pelvic pain,
+          amenorrhea and abnormal uterine bleeding, hymenal abnormalities, labial
+          adhesions, ovarian torsion, gynecomastia).
+
+  - id: 22
+    name: Urologic
+    slug: 22-urologic
+    weight: 1
+    subdomains:
+      - letter: A
+        name: Genital/scrotal conditions
+        slug: a-genital-scrotal-conditions
+        description: >-
+          Identify, evaluate, and manage genital conditions (eg, priapism,
+          paraphimosis/phimosis, urethral prolapse, hydrocele, testicular torsion).
+      - letter: B
+        name: Groin, bladder, and ureteral conditions
+        slug: b-groin-bladder-ureteral
+        description: >-
+          Identify, evaluate, and manage groin, bladder, and ureteral conditions
+          (eg, acute urinary retention, posterior urethral valves, nephrolithiasis).
+
+  - id: 23
+    name: Metabolic/Genetic Emergencies
+    slug: 23-metabolic-genetic
+    weight: 1
+    subdomains:
+      - letter: A
+        name: Hypoglycemia
+        slug: a-hypoglycemia
+        description: >-
+          Identify, evaluate, and manage hypoglycemia (eg, idiopathic ketotic
+          hypoglycemia, congenital hyperinsulinism).
+      - letter: B
+        name: Inborn errors of metabolism
+        slug: b-inborn-errors-of-metabolism
+        description: >-
+          Identify, evaluate, and manage patients presenting in metabolic crisis
+          from inborn errors of metabolism.
+
+  - id: 24
+    name: Musculoskeletal/Orthopedic
+    slug: 24-musculoskeletal-orthopedic
+    weight: 1
+    subdomains:
+      - letter: A
+        name: Bone and joint conditions
+        slug: a-bone-joint-conditions
+        description: >-
+          Identify, evaluate, and manage bone and joint conditions (eg, avascular
+          necrosis, transient synovitis, slipped capital femoral epiphysis,
+          repetitive stress injuries).
+      - letter: B
+        name: Soft tissue conditions
+        slug: b-soft-tissue-conditions
+        description: >-
+          Identify, evaluate, and manage soft tissue conditions (eg, myositis,
+          compartment syndrome).
+
+  - id: 25
+    name: Mass Casualty and Disaster Preparedness
+    slug: 25-mass-casualty-disaster
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Mass casualty events
+        slug: a-mass-casualty-events
+        description: >-
+          Evaluate and manage mass casualty events (eg, mass shootings, vehicle and
+          boat accidents, airplane crashes, structural collapses, blast injuries),
+          including patient triage and centralized command.
+      - letter: B
+        name: Biological, chemical, and radiation exposures
+        slug: b-biological-chemical-radiation
+        description: >-
+          Identify, evaluate, and manage biological, chemical, and radiation
+          exposures (eg, anthrax, microbial outbreaks, organophosphates, nerve
+          agents, "dirty bombs"), including patient triage, decontamination
+          strategies, and use of personal protective equipment.
+      - letter: C
+        name: Disaster preparedness
+        slug: c-disaster-preparedness
+        description: >-
+          Prepare for and manage the medical needs of children in disasters (eg,
+          hurricanes, tornadoes, earthquakes, wildfires, floods, blizzards),
+          including patient triage, coordination with centralized command,
+          integration into disaster response systems, and implementation of family
+          reunification strategies.
+
+  - id: 26
+    name: Emergency Medical Services and Transport
+    slug: 26-ems-and-transport
+    weight: 2
+    subdomains:
+      - letter: A
+        name: EMS systems
+        slug: a-ems-systems
+        description: >-
+          Evaluate and direct the care of pediatric patients in EMS systems,
+          including personnel, equipment, medical direction/control, quality
+          oversight, patient refusals, and liability.
+      - letter: B
+        name: Interfacility transport
+        slug: b-interfacility-transport
+        description: >-
+          Evaluate and direct the care of pediatric patients in interfacility
+          transport, including personnel, equipment, medical direction/control,
+          quality oversight, patient refusals, and liability.
+      - letter: C
+        name: EMTALA
+        slug: c-emtala
+        description: >-
+          Understand and apply legal considerations regarding the Emergency Medical
+          Treatment and Labor Act (EMTALA).
+
+  - id: 27
+    name: Emergency Department Operations and Patient Rights
+    slug: 27-ed-operations-patient-rights
+    weight: 2
+    subdomains:
+      - letter: A
+        name: Operations
+        slug: a-operations
+        description: >-
+          Understand emergency department operations (eg, left without being seen
+          (LWBS), flow/surge management, documentation, legal/ethical
+          considerations, risk management, error disclosure, transitions of
+          care/handoffs).
+      - letter: B
+        name: Patient Rights and Family-Centered Care
+        slug: b-patient-rights-family-centered-care
+        description: >-
+          Understand and apply the principles of patient rights and family-centered
+          care (eg, consent, treatment refusal against medical advice (AMA),
+          emancipated minors, Health Insurance Portability and Accountability Act
+          (HIPAA), culturally and linguistically appropriate care, health equity,
+          social determinants of health).
+
+  - id: 28
     name: Core Knowledge in Scholarly Activities
-    slug: 13-scholarly-activities
-    weight: 4.0
-    universal_tasks: false
-    note: >-
-      All of the ABP's pediatric subspecialties share the common domain of Core
-      Knowledge in Scholarly Activities. Exam questions from this domain focus on
-      knowledge related to research, ethics, and quality improvement.
+    slug: 28-scholarly-activities
+    weight: 4
     subdomains:
       - letter: A
         name: Principles of biostatistics in research
         slug: a-biostatistics
-        topics:
-          - Types of variables
-          - Distribution of data
-          - Hypothesis testing
-          - Common statistical tests
-          - Measurement of association and effect
-          - Regression
-          - Diagnostic tests
-          - Systematic review and meta-analysis
+        description: >-
+          Understand and apply the key principles and concepts of biostatistics in
+          research (eg, sensitivity and specificity, confidence intervals, odds
+          ratios, number needed to treat, interpretation of systematic reviews and
+          meta-analyses).
       - letter: B
         name: Principles of epidemiology and clinical research design
         slug: b-epidemiology-research-design
-        topics:
-          - Study design, performance, and analysis (internal validity)
-          - Generalizability (external validity)
-          - Bias and confounding
-          - Causation
-          - Incidence and prevalence
-          - Screening
-          - Cost benefit, cost effectiveness, and outcomes
-          - Measurement (eg, validity, reliability)
+        description: >-
+          Understand and apply the principles of epidemiology and clinical research
+          design (eg, study types, measures of disease frequency and association,
+          bias, confounding factors, generalizability, methods for assessing
+          causation and validity).
       - letter: C
         name: Ethics in research
         slug: c-research-ethics
-        topics:
-          - Professionalism and misconduct in research
-          - Principles of research involving human subjects
-          - Principles of consent and assent
+        description: >-
+          Understand and apply key ethical considerations in research (eg,
+          protection of human subjects, informed consent and assent, identification
+          and prevention of research misconduct).
       - letter: D
         name: Quality improvement and patient safety
         slug: d-qi-patient-safety
-        topics:
-          - Project design/PDSA
-          - Data and measurement
-          - Root cause analysis
-          - Safety reporting systems
+        description: >-
+          Understand and apply the principles and methodologies of quality
+          improvement and patient safety in healthcare.

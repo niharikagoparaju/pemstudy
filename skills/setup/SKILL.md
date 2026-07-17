@@ -57,13 +57,13 @@ hand-built tree), do NOT silently merge. Ask the user to choose:
 
 ### 4. Create the domain subdecks
 
-Read the 13 domains from `${CLAUDE_PLUGIN_ROOT}/data/pem-content-outline.yaml`.
+Read the 28 domains from `${CLAUDE_PLUGIN_ROOT}/data/pem-content-outline.yaml`.
 For each, create `<deck_root>::<NN> <Domain Name>` where NN is the zero-padded id
-from the `slug` (e.g. `PEM Boards::01 Emergency Conditions` … `PEM Boards::13 Core
-Knowledge in Scholarly Activities`):
+from the `slug` (e.g. `PEM Boards::01 Trauma` … `PEM Boards::28 Core Knowledge in
+Scholarly Activities`):
 
 ```bash
-ANKI create-deck "PEM Boards::01 Emergency Conditions"   # idempotent, one per domain
+ANKI create-deck "PEM Boards::01 Trauma"   # idempotent, one per domain
 ```
 
 ### 5. Create note types
@@ -107,7 +107,7 @@ template just gives their notes a head start. Don't copy without asking.
 Confirm, then summarize to the user:
 
 ```bash
-ANKI decks | grep -c "PEM Boards::"     # expect ≥ 13
+ANKI decks | grep -c "PEM Boards::"     # expect ≥ 28
 ANKI models | grep "PEM"                # expect the 3 PEM models
 ```
 
