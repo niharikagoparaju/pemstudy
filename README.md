@@ -16,7 +16,7 @@ A Claude Code plugin for pediatric emergency medicine (PEM) board prep. It wires
 ## Install
 
 ```
-/plugin marketplace add djerraballi/pemstudy
+/plugin marketplace add redscales/pemstudy
 /plugin install pemstudy@pemstudy
 ```
 
