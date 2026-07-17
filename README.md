@@ -3,8 +3,27 @@
 A Claude Code plugin for pediatric emergency medicine (PEM) board prep. It wires your **Obsidian** study journal to your **Anki** collection so Claude can:
 
 1. **Sync** — parse the notes you take while doing question banks (e.g., RoshReview), propose high-quality spaced-repetition flashcards (including image-identification cards from images pasted into your vault), dedupe them against your existing deck, and create them in Anki.
-2. **Manage** — organize, prune, dedupe, and fact-check your Anki decks conversationally, with dry-run previews and automatic backups before anything destructive.
-3. **Audit** — compare your card coverage against the [ABP PEM content outline](https://www.abp.org/) exam weights and see where you're thin.
+2. **Triage** — digest a pre-existing pile of old cards slowly, without ever flooding your daily queue.
+3. **Manage** — organize, prune, dedupe, and fact-check your Anki decks conversationally, with dry-run previews and automatic backups before anything destructive.
+4. **Audit** — compare your card coverage against the [ABP PEM content outline](https://www.abp.org/) exam weights and see where you're thin.
+
+## The two-deck model
+
+The plugin keeps **two** decks, because the thing that kills board prep is opening Anki to 1,500 due cards and closing it again.
+
+```
+Obsidian vault ──sync──▶  PEM Boards (ABP)::NN <Domain>   ◀──promote── PEM Triage::NN <Domain>
+ (daily habit)             active deck — what you review              suspended holding pen
+                                                                             ▲
+                                                                             │ stage
+                                                                      your old decks
+```
+
+- **The active deck** is fed daily by `sync` from the notes you're actually writing. It stays small and current.
+- **The triage deck** holds your legacy cards, **suspended** — a suspended card cannot enter review no matter which deck you click. They wait there indefinitely at zero cost.
+- **Promotion is the only way across**, one domain at a time. A card gets promoted only after it's been classified, deduped against the active deck, fact-checked, and judged worth your review time. Promoted cards are **reset to new**, so they trickle in at your new-cards/day limit instead of landing due in a heap.
+
+Old cards therefore never ambush you; you decide how fast to digest them, and the junk (duplicates, broken cards, off-outline material) gets filtered out on the way in rather than living in your deck forever.
 
 ## Prerequisites
 
@@ -38,14 +57,19 @@ Setup verifies AnkiConnect, records your vault path, creates the `PEM Boards` de
 3. Review your cards in Anki as usual.
 4. Occasionally run `/pemstudy:deck` to dedupe/prune/reorganize, and `/pemstudy:audit` to see coverage vs. exam weights.
 
+If you're bringing an existing collection: run `/pemstudy:triage` once per old subdeck to stage it (`"stage my PBR Cardiology deck"`), then chip away with `"let's triage some trauma"` whenever you have appetite. `/pemstudy:audit` shows which domains have a backlog worth promoting versus which need new question blocks.
+
 ## Skills
 
 | Skill | What it does |
 |---|---|
 | `/pemstudy:setup` | Wire Anki + Obsidian: verify AnkiConnect, write config, create decks and note types |
 | `/pemstudy:sync` | Journal notes → proposed flashcards → dedupe → create in Anki |
+| `/pemstudy:triage` | Legacy cards → suspended holding pen → promote the worthy ones into the active deck |
 | `/pemstudy:deck` | Conversational deck management: dedupe, prune, accuracy review, retagging |
-| `/pemstudy:audit` | Card coverage vs. ABP PEM content outline exam weights |
+| `/pemstudy:audit` | Card coverage vs. ABP PEM content outline exam weights, plus triage backlog |
+
+Every mutating operation follows the same contract: **dry-run table → your approval → `.apkg` backup → execute → verify.** Backups land in `~/.pemstudy/backups/`.
 
 ## Layout
 
