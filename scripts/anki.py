@@ -9,8 +9,8 @@ Usage:
     anki.py decks
     anki.py models
     anki.py model-fields "PEM Basic"
-    anki.py create-deck "PEM Boards (ABP)::01 Trauma"
-    anki.py find 'deck:"PEM Boards (ABP)" tag:pem::outline::03-infectious-diseases::a-systemic-bacterial-infections'
+    anki.py create-deck "PEM Notes::01 Trauma"
+    anki.py find 'deck:"PEM Notes" tag:pem::outline::03-infectious-diseases::a-systemic-bacterial-infections'
     anki.py notes-info 1234567890 1234567891
     anki.py cards-info 1234567890
     anki.py add-note --json '{"deckName": ..., "modelName": ..., "fields": {...}, "tags": [...]}'
@@ -19,7 +19,7 @@ Usage:
     anki.py delete-notes 1234567890 1234567891
     anki.py add-tags --notes 123,456 --tags "pem::flagged"
     anki.py remove-tags --notes 123,456 --tags "pem::flagged"
-    anki.py change-deck --cards 123,456 --deck "PEM Boards (ABP)::01 Trauma"
+    anki.py change-deck --cards 123,456 --deck "PEM Notes::01 Trauma"
     anki.py suspend --cards 123,456           # take cards out of review rotation
     anki.py unsuspend --cards 123,456         # put them back in
     anki.py are-suspended --cards 123,456

@@ -13,9 +13,18 @@ existing deck, create approved cards in Anki, and record sync state in the notes
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/card-quality.md` (what to propose)
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/note-convention.md` (parsing + sync state)
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/dedupe.md` (duplicate judgment)
+- `${CLAUDE_PLUGIN_ROOT}/skills/shared/preferences.md` (user card preferences)
 
 Config from `~/.pemstudy/config.json` (missing → send the user to the setup skill).
 Verify Anki is reachable (`ping`) before doing any work.
+
+Load user card preferences once, up front, and apply them to every proposal in
+step 2 (see `preferences.md` for precedence — they refine card-quality, never override
+accuracy/dedup):
+
+```bash
+[ -f "$HOME/.pemstudy/preferences.md" ] && cat "$HOME/.pemstudy/preferences.md"
+```
 
 ## Flow
 
@@ -79,6 +88,10 @@ Present ALL proposals in one compact table before creating anything:
 Plus: dropped duplicates (and why), skipped content (markers), flagged accuracy
 concerns. Let the user approve all, drop by number, or edit wording. **No cards are
 created before approval.**
+
+If the user's edits are a **durable** preference ("from now on keep these terse",
+"always cloze the doses"), offer to save it to `~/.pemstudy/preferences.md` so future
+syncs honor it — don't auto-write, and don't persist a one-off ("just these").
 
 ### 5. Create
 

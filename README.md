@@ -29,28 +29,35 @@ Old cards therefore never ambush you, and the junk (duplicates, broken cards, of
 
 ## Prerequisites
 
-- [Anki desktop](https://apps.ankiweb.net/)
-- [AnkiConnect add-on](https://ankiweb.net/shared/info/2055492159) (add-on code `2055492159`) — the setup skill walks you through this
+- [Anki desktop](https://apps.ankiweb.net/) (open while syncing)
 - An [Obsidian](https://obsidian.md/) vault (or any folder of Markdown notes) where you keep study notes
 - Python 3 (ships with macOS; any 3.9+ works — the bundled scripts are stdlib-only)
 
-## Install
+You do **not** need to install AnkiConnect yourself — setup offers to do it for you.
+
+## Install & first run
 
 ```
 /plugin marketplace add redscales/pemstudy
 /plugin install pemstudy@pemstudy
 ```
 
-(For a local checkout: `claude plugin marketplace add /path/to/pemstudy` then the
-same install command.)
+(For a local checkout: `claude plugin marketplace add /path/to/pemstudy` then the same install command.)
 
-Then in Claude Code:
+The first time you open Claude Code after installing, the plugin notices it isn't configured yet and offers to run setup. Or start it yourself:
 
 ```
 /pemstudy:setup
 ```
 
-Setup verifies AnkiConnect, records your vault path, creates the `PEM Notes` deck tree (one subdeck per content-outline domain), and installs the plugin's note types.
+Setup will, in order:
+
+1. **Check AnkiConnect** and, if it's missing, offer to install it automatically (downloads the add-on and drops it into Anki's add-ons folder — then you restart Anki). Falls back to a guided manual install if needed.
+2. **Ask for your Obsidian vault** folder (it tries to auto-detect it first).
+3. **Create the deck tree** (`PEM Notes`, one subdeck per content-outline domain) and the plugin's note types.
+4. Optionally seed a note template and a card-preferences file.
+
+Everything user-specific lives in `~/.pemstudy/` (config, preferences, backups) — nothing about your setup is committed to the repo.
 
 ## Workflow
 
@@ -61,13 +68,18 @@ Setup verifies AnkiConnect, records your vault path, creates the `PEM Notes` dec
 
 If you're bringing an existing collection: run `/pemstudy:triage` once per old subdeck to stage it (`"stage my PBR Cardiology deck"`), then chip away with `"let's triage some trauma"` whenever you have appetite. `/pemstudy:audit` shows which domains have cards waiting to be triaged versus which need new question blocks.
 
+## Card preferences
+
+You can shape how cards are made without editing anything. Just tell Claude — *"from now on keep cards to one line"*, *"always cloze the doses"*, *"add mnemonics when they exist"*, *"prefer image-ID cards for rashes"* — and it saves the instruction to `~/.pemstudy/preferences.md`, which `sync` and `triage` read on every run. View or edit them anytime with `/pemstudy:prefs`. Preferences shape style and selection; they never override medical accuracy or the safety checks.
+
 ## Skills
 
 | Skill | What it does |
 |---|---|
-| `/pemstudy:setup` | Wire Anki + Obsidian: verify AnkiConnect, write config, create decks and note types |
+| `/pemstudy:setup` | Wire Anki + Obsidian: install/verify AnkiConnect, write config, create decks and note types |
 | `/pemstudy:sync` | Journal notes → proposed flashcards → dedupe → create in Anki |
 | `/pemstudy:triage` | Stage old decks into `PEM Legacy` (suspended), then approve the worthy ones into rotation |
+| `/pemstudy:prefs` | View or edit your card preferences (`~/.pemstudy/preferences.md`) |
 | `/pemstudy:deck` | Conversational deck management: dedupe, prune, accuracy review, retagging |
 | `/pemstudy:audit` | Card coverage vs. ABP PEM content outline exam weights, plus triage backlog |
 
@@ -76,6 +88,8 @@ Every mutating operation follows the same contract: **dry-run table → your app
 ## Layout
 
 - `scripts/anki.py` — stdlib-only AnkiConnect CLI used by all skills
+- `scripts/install_ankiconnect.py` — stdlib cross-platform AnkiConnect add-on installer (used by setup)
+- `hooks/` — SessionStart hook that nudges first-time users toward `/pemstudy:setup`
 - `skills/sync/scan.py` — stdlib vault scanner (finds notes needing sync via `pem_synced` frontmatter vs mtime)
 - `data/pem-content-outline.yaml` — the full ABP PEM content outline (domains, subdomains, topics, exam weights)
 - `templates/` — optional Obsidian note templates

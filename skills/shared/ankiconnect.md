@@ -15,8 +15,20 @@ python3 "${CLAUDE_PLUGIN_ROOT}/scripts/anki.py" ping
 ```
 
 If ping fails: ask the user to open Anki. If it still fails, the add-on is missing —
-have them install it (Tools → Add-ons → Get Add-ons → `2055492159` → restart Anki),
-then re-ping.
+either run the auto-installer (`scripts/install_ankiconnect.py`) or have them install
+it manually (Tools → Add-ons → Get Add-ons → `2055492159` → restart Anki), then
+re-ping. The setup skill drives this ladder.
+
+**Add-on install internals** (used by `install_ankiconnect.py`):
+- Anki's add-ons live in `<Anki2>/addons21/2055492159/`, where `<Anki2>` is
+  `~/Library/Application Support/Anki2` (macOS), `~/.local/share/Anki2` (Linux, or
+  `$XDG_DATA_HOME/Anki2`), or `%APPDATA%/Anki2` (Windows).
+- AnkiWeb's download endpoint **requires** version params:
+  `https://ankiweb.net/shared/download/2055492159?v=2.1&p=<numeric>`. A bare URL
+  returns the ASCII string "Your version of Anki is too old." instead of the zip
+  (discovered in testing). The installer checks the payload starts with `PK` (zip
+  magic) before unpacking.
+- Anki must be **restarted** to load a newly-dropped add-on; it does not hot-load.
 
 ## Config
 

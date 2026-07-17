@@ -1,7 +1,7 @@
 {
   "name": "pemstudy",
-  "description": "Pediatric Emergency Medicine board-prep toolkit: sync Obsidian study notes into high-quality Anki flashcards, manage and prune decks, and audit coverage against the ABP PEM content outline",
-  "version": "0.1.0",
+  "description": "Pediatric Emergency Medicine board-prep toolkit: sync Obsidian study notes into high-quality Anki flashcards (with your own card preferences), triage a legacy collection, manage and prune decks, and audit coverage against the ABP PEM content outline",
+  "version": "0.2.0",
   "author": {
     "name": "Dheeraj Erraballi",
     "email": "dj.erraballi@gmail.com"
@@ -16,6 +16,7 @@
     "flashcards",
     "medical-education",
     "pediatric-emergency-medicine",
-    "board-prep"
+    "board-prep",
+    "prefs"
   ]
 }

@@ -17,15 +17,31 @@ ANKI() { python3 "${CLAUDE_PLUGIN_ROOT}/scripts/anki.py" "$@"; }
 
 ## Steps
 
-### 1. Verify AnkiConnect
+### 1. Verify AnkiConnect (and install it if missing)
 
 ```bash
-ANKI ping
+ANKI ping        # → {"ankiconnect_version": 6} when working
 ```
 
-- Connection refused → ask the user to open Anki, then re-ping.
-- Still refused → AnkiConnect isn't installed: have the user open Anki →
-  Tools → Add-ons → Get Add-ons… → paste `2055492159` → restart Anki. Re-ping.
+If ping fails, walk this ladder:
+
+1. **Anki not open** (connection refused, and the user confirms Anki is closed) → ask
+   them to open Anki, re-ping.
+2. **Anki open but still refused** → AnkiConnect isn't installed. Offer to install it
+   automatically:
+
+   ```bash
+   python3 "${CLAUDE_PLUGIN_ROOT}/scripts/install_ankiconnect.py"
+   ```
+
+   It detects the OS, downloads the add-on, and unzips it into Anki's `addons21`
+   folder (idempotent — safe if already present). Then **the user must fully quit and
+   reopen Anki** for it to load. Re-ping after restart.
+3. **Auto-install fails** (no internet, non-standard Anki dir, AnkiWeb hiccup) → fall
+   back to manual: Anki → Tools → Add-ons → Get Add-ons… → paste `2055492159` →
+   restart Anki. Re-ping.
+
+Don't proceed past this step until `ping` succeeds — every later step needs Anki.
 
 ### 2. Locate the Obsidian vault
 
@@ -108,11 +124,15 @@ at the triage skill; otherwise leave it `[]`.
 
 Also create `~/.pemstudy/backups/` (used by the deck skill before destructive ops).
 
-### 7. Offer the note template
+### 7. Offer the note template and card preferences
 
-Offer to copy `${CLAUDE_PLUGIN_ROOT}/templates/rosh-session.md` into the vault
-(e.g. `<vault>/templates/`). Optional — the sync skill parses free-form notes; the
-template just gives their notes a head start. Don't copy without asking.
+- Offer to copy `${CLAUDE_PLUGIN_ROOT}/templates/rosh-session.md` into the vault
+  (e.g. `<vault>/templates/`). Optional — the sync skill parses free-form notes; the
+  template just gives their notes a head start. Don't copy without asking.
+- Offer to seed card preferences by copying
+  `${CLAUDE_PLUGIN_ROOT}/templates/preferences.md` → `~/.pemstudy/preferences.md`
+  (all-commented, so a no-op until edited). Mention they can shape cards anytime by
+  chatting or via `/pemstudy:prefs`. Don't overwrite an existing preferences file.
 
 ### 8. Verify and report
 

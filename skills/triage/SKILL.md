@@ -27,6 +27,8 @@ obvious at a glance.
   note-id vs card-id
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/dedupe.md` — duplicate judgment (promote)
 - `${CLAUDE_PLUGIN_ROOT}/skills/shared/card-quality.md` — is this card worth keeping
+- `${CLAUDE_PLUGIN_ROOT}/skills/shared/preferences.md` — user card preferences (apply
+  when proposing rewrites/corrections during promote)
 - `${CLAUDE_PLUGIN_ROOT}/data/pem-content-outline.yaml` — domains, subdomains,
   competency descriptions (the descriptions are the best classification signal)
 
