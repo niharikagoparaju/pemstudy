@@ -20,6 +20,9 @@ A Claude Code plugin for pediatric emergency medicine (PEM) board prep. It wires
 /plugin install pemstudy@pemstudy
 ```
 
+(For a local checkout: `claude plugin marketplace add /path/to/pemstudy` then the
+same install command.)
+
 Then in Claude Code:
 
 ```
@@ -47,11 +50,21 @@ Setup verifies AnkiConnect, records your vault path, creates the `PEM Boards` de
 ## Layout
 
 - `scripts/anki.py` — stdlib-only AnkiConnect CLI used by all skills
+- `skills/sync/scan.py` — stdlib vault scanner (finds notes needing sync via `pem_synced` frontmatter vs mtime)
 - `data/pem-content-outline.yaml` — the full ABP PEM content outline (domains, subdomains, topics, exam weights)
 - `templates/` — optional Obsidian note templates
 - `skills/shared/` — reference docs the skills lean on (AnkiConnect cookbook, card-quality guide, note conventions)
 
-Configuration lives in `~/.pemstudy/config.json` (created by setup).
+Configuration lives in `~/.pemstudy/config.json` (created by setup); pre-mutation
+deck backups land in `~/.pemstudy/backups/`.
+
+## How syncing stays idempotent
+
+The sync skill stamps each processed note's frontmatter with `pem_synced` and the
+Anki note ids it created (`pem_anki_notes`), then resets the file's mtime to match.
+Re-running sync only picks up new notes and notes edited after their stamp; cards
+carry `pem::source::<note>` and `pem::outline::<domain>::<subdomain>` tags plus a
+`Source` field, so everything is traceable in both directions.
 
 ## License
 
