@@ -27,17 +27,21 @@ ANKI find '"deck:<deck_root>::01 Trauma"'   # count ids per domain
 If the user also wants legacy/hand-built decks counted, they must name them; map
 each named deck to a domain by content and say what mapping was assumed.
 
-### 2. Count the triage backlog per domain
+### 2. Count the legacy tree per domain
 
-If a `PEM Triage` tree exists (see the triage skill), count what's still waiting:
+If a `PEM Legacy` tree exists (see the triage skill), count both of its states —
+they mean different things:
 
 ```bash
-ANKI find '"deck:<triage_deck_root>::01 Trauma" -tag:pem::triage::rejected'
+# approved and in rotation (counts toward what you're actually studying)
+ANKI find '"deck:<legacy_deck_root>::01 Trauma" -is:suspended'
+# still waiting to be triaged
+ANKI find '"deck:<legacy_deck_root>::01 Trauma" is:suspended -tag:pem::triage::rejected'
 ```
 
-Report it as its own column — it answers "which domain should I promote next",
-which is usually the more actionable question than the gap itself. Skip this
-section entirely when no triage deck exists.
+Report **Live** and **Waiting** as separate columns. "Waiting" answers "which domain
+should I triage next", which is usually more actionable than the gap itself. Skip this
+section entirely when no legacy deck exists.
 
 ### 3. Subdomain resolution (top-weighted domains and on request)
 
@@ -67,27 +71,30 @@ gap, and the deck scoping above already excludes them.)
 
 ### 4. Report
 
-Render one table, sorted by (exam weight − card share) descending — biggest gaps
-first. Drop the Triage column when there's no triage deck:
+Render one table, sorted by (exam weight − note-derived share) descending — biggest
+gaps first. Drop the last two columns when there's no legacy deck:
 
-| Domain | Exam weight | Cards | Card share | Δ | Triage |
-|---|---|---|---|---|---|
+| Domain | Exam weight | Notes | Share | Δ | Legacy live | Waiting |
+|---|---|---|---|---|---|---|
 
-- **Card share** = active-deck domain cards / total active cards (show `0` rows too —
-  untouched domains are the headline).
-- Flag domains with zero cards.
-- **Triage** = notes awaiting promotion. A domain with a big gap *and* a big triage
-  backlog is cheap to fix (promote); a big gap with an empty backlog needs new
-  question blocks. That distinction is the point of the column.
+- **Notes / Share** = the note-derived deck (`deck_root`) only — that's the deck the
+  user's daily habit builds, so it's the honest measure of their own coverage. Show
+  `0` rows too; untouched domains are the headline.
+- **Legacy live** = approved legacy cards in rotation. Real study volume, but not
+  something the user wrote — keep it a separate column, never folded into Share.
+- **Waiting** = staged but untriaged. A domain with a big gap *and* a big waiting
+  pile is cheap to fix (triage it); a big gap with nothing waiting needs new question
+  blocks. That distinction is the point of these columns.
+- Flag domains with zero cards of any kind.
 - Include review-state color if the user asks (e.g. `is:new` vs mature counts per
   domain via `find` with `-is:new` etc.).
 
 ### 5. Recommend
 
 Close with 2–4 concrete suggestions tied to the data, distinguishing the two fixes:
-"Trauma is 17% of the exam, you have 4 cards, and 143 are waiting in triage —
-promote, don't grind new questions" vs "Resuscitation is 10% with 0 cards and an
-empty backlog — needs question blocks". Keep it descriptive; the user decides.
+"Trauma is 17% of the exam, you have 4 cards, and 143 are waiting in the legacy deck —
+triage those, don't grind new questions" vs "Resuscitation is 10% with 0 cards and
+nothing waiting — needs question blocks". Keep it descriptive; the user decides.
 
 ## Interpretation cautions
 

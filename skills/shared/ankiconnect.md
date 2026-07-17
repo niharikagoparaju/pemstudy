@@ -26,14 +26,14 @@ then re-ping.
 {
   "vault_path": "/path/to/obsidian/vault",
   "deck_root": "PEM Boards",
-  "triage_deck_root": "PEM Triage",
+  "legacy_deck_root": "PEM Legacy",
   "legacy_decks": ["Old Deck A", "Old Deck B"],
   "ankiconnect_url": "http://127.0.0.1:8765"
 }
 ```
 
 `anki.py` reads `ankiconnect_url` itself. Skills read `vault_path` and `deck_root`.
-`triage_deck_root` (default `"PEM Triage"` when absent) and `legacy_decks` are used
+`legacy_deck_root` (default `"PEM Legacy"` when absent) and `legacy_decks` are used
 only by the triage skill.
 
 ## Common operations

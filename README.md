@@ -9,21 +9,23 @@ A Claude Code plugin for pediatric emergency medicine (PEM) board prep. It wires
 
 ## The two-deck model
 
-The plugin keeps **two** decks, because the thing that kills board prep is opening Anki to 1,500 due cards and closing it again.
+The plugin keeps **two separate deck trees**, because the thing that kills board prep is opening Anki to 1,500 due cards and closing it again.
 
 ```
-Obsidian vault ──sync──▶  PEM Boards (ABP)::NN <Domain>   ◀──promote── PEM Triage::NN <Domain>
- (daily habit)             active deck — what you review              suspended holding pen
-                                                                             ▲
-                                                                             │ stage
-                                                                      your old decks
+Obsidian vault ──sync──▶  PEM Boards (ABP)::NN <Domain>     ← cards from YOUR notes, only
+ (daily habit)
+
+your old decks ──stage──▶  PEM Legacy::NN <Domain>          ← cards from your old collection, only
+                             suspended   = not yet triaged
+                             unsuspended = approved, in rotation   ◀── promote (in place)
 ```
 
-- **The active deck** is fed daily by `sync` from the notes you're actually writing. It stays small and current.
-- **The triage deck** holds your legacy cards, **suspended** — a suspended card cannot enter review no matter which deck you click. They wait there indefinitely at zero cost.
-- **Promotion is the only way across**, one domain at a time. A card gets promoted only after it's been classified, deduped against the active deck, fact-checked, and judged worth your review time. Promoted cards are **reset to new**, so they trickle in at your new-cards/day limit instead of landing due in a heap.
+- **The note deck** is fed daily by `sync` from the notes you're actually writing. It contains nothing else, so it's an honest measure of what you've studied.
+- **The legacy deck** holds your old cards, organized by the content outline and **suspended** — a suspended card cannot enter review no matter which deck you click. They wait indefinitely at zero cost.
+- **Promotion unsuspends in place**, one domain at a time, after a card has been deduped, fact-checked, and judged worth your review time. Promoted cards are **reset to new**, so they trickle in at your new-cards/day limit instead of landing due in a heap.
+- **No card ever crosses between the trees.** Two trees means two independent new-cards/day dials: run notes at 20/day and legacy at 5/day, and the note habit always wins.
 
-Old cards therefore never ambush you; you decide how fast to digest them, and the junk (duplicates, broken cards, off-outline material) gets filtered out on the way in rather than living in your deck forever.
+Old cards therefore never ambush you, and the junk (duplicates, broken cards, off-outline material) gets filtered out during triage rather than living in your deck forever.
 
 ## Prerequisites
 
@@ -57,7 +59,7 @@ Setup verifies AnkiConnect, records your vault path, creates the `PEM Boards` de
 3. Review your cards in Anki as usual.
 4. Occasionally run `/pemstudy:deck` to dedupe/prune/reorganize, and `/pemstudy:audit` to see coverage vs. exam weights.
 
-If you're bringing an existing collection: run `/pemstudy:triage` once per old subdeck to stage it (`"stage my PBR Cardiology deck"`), then chip away with `"let's triage some trauma"` whenever you have appetite. `/pemstudy:audit` shows which domains have a backlog worth promoting versus which need new question blocks.
+If you're bringing an existing collection: run `/pemstudy:triage` once per old subdeck to stage it (`"stage my PBR Cardiology deck"`), then chip away with `"let's triage some trauma"` whenever you have appetite. `/pemstudy:audit` shows which domains have cards waiting to be triaged versus which need new question blocks.
 
 ## Skills
 
@@ -65,7 +67,7 @@ If you're bringing an existing collection: run `/pemstudy:triage` once per old s
 |---|---|
 | `/pemstudy:setup` | Wire Anki + Obsidian: verify AnkiConnect, write config, create decks and note types |
 | `/pemstudy:sync` | Journal notes → proposed flashcards → dedupe → create in Anki |
-| `/pemstudy:triage` | Legacy cards → suspended holding pen → promote the worthy ones into the active deck |
+| `/pemstudy:triage` | Stage old decks into `PEM Legacy` (suspended), then approve the worthy ones into rotation |
 | `/pemstudy:deck` | Conversational deck management: dedupe, prune, accuracy review, retagging |
 | `/pemstudy:audit` | Card coverage vs. ABP PEM content outline exam weights, plus triage backlog |
 
